@@ -23,6 +23,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception, FileNotFoundException {
 //        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("new hello world");
+        String currentDirectory = System.getProperty("user.dir");
+        System.out.println(currentDirectory);
         String name = "C:\\PlantsVsZombies\\pvz_images\\plant_gifs\\peashooter.gif";
         Image image = new Image(new FileInputStream(name));
         ImageView iv = new ImageView(image);
