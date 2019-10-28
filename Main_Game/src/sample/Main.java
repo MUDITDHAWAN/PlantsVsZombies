@@ -26,7 +26,9 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
+    public void f2(){
+        System.out.println("ohno");
+    }
 
     public static void main(String[] args) {
         launch(args);
