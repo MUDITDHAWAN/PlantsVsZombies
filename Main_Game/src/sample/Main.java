@@ -25,7 +25,7 @@ public class Main extends Application {
         primaryStage.setTitle("new hello world");
         String currentDirectory = System.getProperty("user.dir");
         System.out.println(currentDirectory);
-        String name = "C:\\PlantsVsZombies\\pvz_images\\plant_gifs\\peashooter.gif";
+        String name = currentDirectory+ "\\pvz_images\\plant_gifs\\peashooter.gif";
         Image image = new Image(new FileInputStream(name));
         ImageView iv = new ImageView(image);
         iv.setX(350);
