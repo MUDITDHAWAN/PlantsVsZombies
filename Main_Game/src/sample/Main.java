@@ -23,13 +23,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception, FileNotFoundException {
 //        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("new hello world");
-        String name = "C:\\Users\\Samik\\Desktop\\sprites\\Wallnut_body.png";
+        String name = "C:\\PlantsVsZombies\\pvz_images\\plant_gifs\\peashooter.gif";
         Image image = new Image(new FileInputStream(name));
         ImageView iv = new ImageView(image);
-        iv.setX(50);
-        iv.setY(50);
-        iv.setFitHeight(250);
-        iv.setFitWidth(250);
+        iv.setX(350);
+        iv.setY(0);
+        iv.setFitHeight(50);
+        iv.setFitWidth(50);
         iv.setPreserveRatio(true);
 
         Button button = new Button("click me now");
