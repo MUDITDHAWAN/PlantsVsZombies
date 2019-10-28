@@ -4,25 +4,41 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception, FileNotFoundException {
 //        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("new hello world");
+        String name = "C:\\Users\\Samik\\Desktop\\sprites\\Wallnut_body.png";
+        Image image = new Image(new FileInputStream(name));
+        ImageView iv = new ImageView(image);
+        iv.setX(50);
+        iv.setY(50);
+        iv.setFitHeight(250);
+        iv.setFitWidth(250);
+        iv.setPreserveRatio(true);
+
         Button button = new Button("click me now");
+
         button.setOnAction(new ClickEvent());
         StackPane stackPane = new StackPane();
         stackPane.getChildren().add(button);
-        Scene scene = new Scene(stackPane,1000,250);
+        Group root = new Group(stackPane,iv);
+        Scene scene = new Scene(root,1000,250);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
