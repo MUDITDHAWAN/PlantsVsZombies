@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -25,33 +26,34 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception, FileNotFoundException {
 //        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("new hello world");
         String currentDirectory = System.getProperty("user.dir");
         System.out.println(currentDirectory);
-        String peashooter = currentDirectory+ "\\pvz_images\\plant_gifs\\peashooter.gif";
-        Image image = new Image(new FileInputStream(peashooter));
-        ImageView iv = new ImageView(image);
-        iv.setX(350);
-        iv.setY(0);
-        iv.setFitHeight(50);
-        iv.setFitWidth(50);
-        iv.setPreserveRatio(true);
 
-        String main_video = currentDirectory + "\\pvz_images\\loading_video.mp4";
-        Media main_menu = new Media(currentDirectory + "\\pvz_images\\loading_video.mp4");
-        MediaPlayer play_video = new MediaPlayer(main_menu);
-        play_video.setAutoPlay(true);
-        
 
-        Button button = new Button("click me now");
-
+        // Loading Page Scene 1
+        primaryStage.setTitle("Loading Page");
+        Button button = new Button("Login Page");
         button.setOnAction(new ClickEvent());
-        StackPane stackPane = new StackPane();
-        stackPane.getChildren().add(button);
-        Group root = new Group(stackPane,iv);
+
+        String loading_Page_String = currentDirectory+ "\\pvz_images\\loadingpage.png";
+        Image loading_Page_Image = new Image(new FileInputStream(loading_Page_String));
+        ImageView loading_Page_Image_View = new ImageView(loading_Page_Image);
+        loading_Page_Image_View.fitWidthProperty().bind(primaryStage.widthProperty());
+
+        BorderPane root = new BorderPane();
+        root.setBottom(button);
+        root.setCenter(loading_Page_Image_View);
         Scene scene = new Scene(root,1000,250);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+
+        // Login page and selecting Day
+
+
+
+
+
     }
 
     public void f2(){

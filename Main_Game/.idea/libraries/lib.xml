@@ -2,12 +2,16 @@
   <library name="lib">
     <CLASSES>
       <root url="file://D:/javaFX/lib" />
+      <root url="file://C:/JavaFX/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="file://D:/javaFX/lib" />
+      <root url="file://C:/JavaFX/lib" />
     </SOURCES>
+    <jarDirectory url="file://C:/JavaFX/lib" recursive="false" />
     <jarDirectory url="file://D:/javaFX/lib" recursive="false" />
+    <jarDirectory url="file://C:/JavaFX/lib" recursive="false" type="SOURCES" />
     <jarDirectory url="file://D:/javaFX/lib" recursive="false" type="SOURCES" />
   </library>
 </component>
