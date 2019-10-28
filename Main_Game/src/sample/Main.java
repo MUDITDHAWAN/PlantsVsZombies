@@ -26,9 +26,16 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+<<<<<<< HEAD
     public void f2(){
         System.out.println("ohno");
     }
+=======
+    public void f1(){
+        System.out.println("kya yeh chal gaya?");
+    }
+
+>>>>>>> 2698332a0dd5aa6e51e45dddd5e5cfb0ac5efccb
 
     public static void main(String[] args) {
         launch(args);
