@@ -26,6 +26,9 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+    public void f1(){
+        System.out.println("kya yeh chal gaya?");
+    }
 
 
     public static void main(String[] args) {
