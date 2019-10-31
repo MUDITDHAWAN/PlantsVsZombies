@@ -25,26 +25,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception, FileNotFoundException {
-//        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        String currentDirectory = System.getProperty("user.dir");
-        System.out.println(currentDirectory);
+        Parent root = FXMLLoader.load(getClass().getResource("loadingPage.fxml"));
+        primaryStage.setTitle("Test");
 
-
-        // Loading Page Scene 1
-        primaryStage.setTitle("Loading Page");
-        Button button = new Button("Login Page");
-        button.setOnAction(new ClickEvent());
-
-        String loading_Page_String = currentDirectory+ "\\pvz_images\\loadingpage.png";
-        Image loading_Page_Image = new Image(new FileInputStream(loading_Page_String));
-        ImageView loading_Page_Image_View = new ImageView(loading_Page_Image);
-        loading_Page_Image_View.fitWidthProperty().bind(primaryStage.widthProperty());
-
-        BorderPane root = new BorderPane();
-        root.setBottom(button);
-        root.setCenter(loading_Page_Image_View);
-        Scene scene = new Scene(root,1000,250);
-        primaryStage.setScene(scene);
+        primaryStage.setScene(new Scene(root,600,400));
         primaryStage.show();
 
 
