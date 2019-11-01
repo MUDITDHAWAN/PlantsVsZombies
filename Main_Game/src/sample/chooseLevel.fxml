@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ChooseLevelController">
+   <children>
+      <ImageView fitHeight="104.0" fitWidth="144.0" layoutX="70.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@card_cherrybomb.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="104.0" fitWidth="144.0" layoutX="263.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@card_cherrybomb.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="104.0" fitWidth="144.0" layoutX="438.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@card_cherrybomb.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="104.0" fitWidth="144.0" layoutX="444.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@card_cherrybomb.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="104.0" fitWidth="144.0" layoutX="263.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@card_cherrybomb.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="104.0" fitWidth="144.0" layoutX="71.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@card_cherrybomb.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="94.0" layoutY="148.0" text="level" />
+      <Label layoutX="300.0" layoutY="157.0" text="level" />
+      <Label layoutX="462.0" layoutY="157.0" text="level" />
+      <Label layoutX="95.0" layoutY="337.0" text="level" />
+      <Label layoutX="287.0" layoutY="346.0" text="level" />
+      <Label layoutX="475.0" layoutY="329.0" text="level" />
+      <Button layoutX="72.0" layoutY="38.0" mnemonicParsing="false" onAction="#changeScene3" opacity="0.0" prefHeight="104.0" prefWidth="74.0" text="Button" />
+   </children>
+</AnchorPane>
