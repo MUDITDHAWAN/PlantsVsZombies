@@ -31,8 +31,10 @@ public class ChooseLevelController  {
   public void changeScene3(ActionEvent event) throws IOException {
       Parent levelParent = FXMLLoader.load(getClass().getResource("lawnLevel3.fxml"));
       Scene changed = new Scene(levelParent);
+
       stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-      stage.setScene(changed);
       stage.show();
+      stage.setScene(changed);
+
   }
 }

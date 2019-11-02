@@ -30,8 +30,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception, FileNotFoundException {
-        Parent root1 = FXMLLoader.load(getClass().getResource("lawnLevel3.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("chooseLevel.fxml"));
+
+        Parent root = FXMLLoader.load(getClass().getResource("mainpage.fxml"));
         primaryStage.setTitle("Test");
         Scene s1 = new Scene(root,600,400);
 //        Scene s2 = new Scene(root1,600,400);
