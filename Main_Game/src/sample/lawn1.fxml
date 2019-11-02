@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane prefHeight="344.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Lawn1Controller">
    <children>
       <ImageView id="lawnimage" fitHeight="356.0" fitWidth="600.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
@@ -31,6 +30,16 @@
         <rowConstraints>
           <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
         </rowConstraints>
+         <children>
+            <ImageView fx:id="onexzero" fitHeight="71.0" fitWidth="55.0" onDragDropped="#handleDragDrop" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="twoxzero" fitHeight="80.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+            <ImageView fx:id="threexzero" fitHeight="84.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+            <ImageView fx:id="fourxzero" fitHeight="79.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
+            <ImageView fx:id="fivexzero" fitHeight="78.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
+            <ImageView fx:id="eightxzero" fitHeight="80.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" />
+            <ImageView fx:id="sevenxzero" fitHeight="93.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
+            <ImageView fx:id="sixxzero" fitHeight="81.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
+         </children>
       </GridPane>
       <ImageView fitHeight="59.0" fitWidth="55.0" layoutX="95.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -47,16 +56,17 @@
             <Image url="@pvz_images/plant_cards/board.jpg" />
          </image>
       </ImageView>
-      <ImageView id="peashooter_card" fitHeight="76.0" fitWidth="78.0" layoutX="70.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="peashooter_card" fx:id="peashooter_card" fitHeight="76.0" fitWidth="78.0" layoutX="70.0" layoutY="2.0" onDragDetected="#handleDragDetected" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pvz_images/plant_cards/card_peashooter.png" />
          </image>
       </ImageView>
       <TextField id="sun_text" layoutX="14.0" layoutY="53.0" prefHeight="11.0" prefWidth="48.0" />
-      <ImageView id="zombie1" fitHeight="88.0" fitWidth="69.0" layoutX="519.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="zombie1" fx:id="zombie1" fitHeight="88.0" fitWidth="69.0" layoutX="519.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pvz_images/zombie_gifs/zombie_normal.gif" />
          </image>
       </ImageView>
+      <ImageView fx:id="ninexzero" fitHeight="59.0" fitWidth="62.0" layoutX="525.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
