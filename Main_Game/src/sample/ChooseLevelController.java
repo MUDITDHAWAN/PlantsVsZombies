@@ -21,6 +21,8 @@ public class ChooseLevelController  {
     private Button button;
   @FXML
     Stage stage;
+  @FXML
+  Parent lawn1,lawn2,lawn3;
   public ChooseLevelController() throws IOException {
 
   }
@@ -28,13 +30,24 @@ public class ChooseLevelController  {
     public void initialize(){
 
   }
-  public void changeScene3(ActionEvent event) throws IOException {
-      Parent levelParent = FXMLLoader.load(getClass().getResource("lawnLevel3.fxml"));
-      Scene changed = new Scene(levelParent);
 
-      stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-      stage.show();
-      stage.setScene(changed);
+    private void createScene(Parent p,String fxmlfile,ActionEvent event) throws IOException {
+        p =  FXMLLoader.load(getClass().getResource(fxmlfile));
+        Scene scene = new Scene(p);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.show();
+        stage.setScene(scene);
+    }
+  public void changeScene3(ActionEvent event) throws IOException {
+      createScene(lawn3,"lawnLevel3.fxml",event);
 
   }
+    public void changeScene2(ActionEvent event) throws IOException {
+        createScene(lawn2,"lawnLevel2.fxml",event);
+
+    }
+    public void changeScene1(ActionEvent event) throws IOException {
+        createScene(lawn1,"lawnLevel1.fxml",event);
+
+    }
 }

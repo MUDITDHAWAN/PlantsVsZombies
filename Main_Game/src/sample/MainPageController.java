@@ -29,6 +29,7 @@ public class MainPageController {
     public MainPageController(){
 
     }
+    @FXML
     private void createScene(Parent p,String fxmlfile,ActionEvent event) throws IOException {
         p =  FXMLLoader.load(getClass().getResource(fxmlfile));
         Scene scene = new Scene(p);
@@ -36,11 +37,11 @@ public class MainPageController {
         stage.show();
         stage.setScene(scene);
     }
-
+    @FXML
     public void startGameButtonPressed(ActionEvent event) throws IOException {
         createScene(lawnScreen,"lawnLevel3.fxml",event);
     }
-
+    @FXML
     public void chooseLevelButtonPressed(ActionEvent event) throws IOException {
         createScene(chooseLevelScreen,"chooseLevel.fxml",event);
     }
