@@ -34,7 +34,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("mainpage.fxml"));
         primaryStage.setTitle("Test");
         Scene s1 = new Scene(root,600,400);
-//        Scene s2 = new Scene(root1,600,400);
+
         primaryStage.show();
         primaryStage.setScene(s1);
         

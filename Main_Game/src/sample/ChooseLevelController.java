@@ -46,8 +46,12 @@ public class ChooseLevelController  {
         createScene(lawn2,"lawnLevel2.fxml",event);
 
     }
-    public void changeScene1(ActionEvent event) throws IOException {
+    public void changeScene1(ActionEvent event) throws IOException, InterruptedException {
         createScene(lawn1,"lawnLevel1.fxml",event);
+        for(int i = 0;i<5;i++){
+            Thread.sleep(1000);
+        }
+        stage.setScene(new Scene( FXMLLoader.load(getClass().getResource("lawn1.fxml"))));
 
     }
 }
