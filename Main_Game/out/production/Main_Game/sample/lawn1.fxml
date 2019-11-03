@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -32,7 +33,6 @@
             <Image url="@pvz_images/plant_cards/card_peashooter.png" />
          </image>
       </ImageView>
-      <TextField id="sun_text" layoutX="14.0" layoutY="53.0" prefHeight="11.0" prefWidth="48.0" />
       <ImageView fx:id="ninexzero" fitHeight="59.0" fitWidth="62.0" layoutX="528.0" layoutY="159.0" onDragDropped="#handleDragDrop9" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView id="zombie1" fx:id="zombie1" fitHeight="88.0" fitWidth="69.0" layoutX="528.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -90,6 +90,19 @@
       <ImageView fx:id="peaOfPlacedPlant9" fitHeight="18.0" fitWidth="69.0" layoutX="545.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@pvz_images/pea/Pea.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="414.0" layoutY="296.0" mnemonicParsing="false" onAction="#saveGameButtonPressed" text="Save Game" />
+      <Button layoutX="519.0" layoutY="296.0" mnemonicParsing="false" onAction="#quitButtonPressed" text="Quit" />
+      <ImageView fx:id="progressbarhead" fitHeight="38.0" fitWidth="39.0" layoutX="519.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pvz_images/backyard/prgressbar_head.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="32.0" layoutY="54.0" text="0" />
+      <ImageView fitHeight="25.0" fitWidth="200.0" layoutX="357.0" layoutY="14.0" opacity="0.39" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pvz_images/backyard/progressbar1.png" />
          </image>
       </ImageView>
    </children>

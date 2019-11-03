@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
@@ -26,11 +27,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class Lawn1Controller implements Initializable {
-
     @FXML
     private ImageView zombie1;
     @FXML
-    private ImageView peashooter_card, peaOfPlacedPlant1, peaOfPlacedPlant2, peaOfPlacedPlant3, peaOfPlacedPlant4, peaOfPlacedPlant5, peaOfPlacedPlant6, peaOfPlacedPlant7, peaOfPlacedPlant8, peaOfPlacedPlant9, onexzero, twoxzero, threexzero, fourxzero, fivexzero, sixxzero, sevenxzero, eightxzero, ninexzero;
+    private ImageView peashooter_card,progressbarhead, progressbar2,  peaOfPlacedPlant1, peaOfPlacedPlant2, peaOfPlacedPlant3, peaOfPlacedPlant4, peaOfPlacedPlant5, peaOfPlacedPlant6, peaOfPlacedPlant7, peaOfPlacedPlant8, peaOfPlacedPlant9, onexzero, twoxzero, threexzero, fourxzero, fivexzero, sixxzero, sevenxzero, eightxzero, ninexzero;
 
     @FXML
     public void handleDragDetected(MouseEvent event) throws FileNotFoundException{
@@ -108,6 +108,14 @@ public class Lawn1Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         zombiemove();
+        progressbar();
+    }
+    public void progressbar(){
+        TranslateTransition tt = new TranslateTransition(Duration.seconds(30), progressbarhead);
+        tt.setFromX(progressbarhead.getX() );
+        tt.setToX( progressbarhead.getX()-160);
+        tt.setCycleCount(1);
+        tt.play();
     }
     public void zombiemove() {
         TranslateTransition tt = new TranslateTransition(Duration.seconds(30), zombie1);
@@ -187,6 +195,11 @@ public class Lawn1Controller implements Initializable {
 
 
     }
+    @FXML
+    public void quitButtonPressed(ActionEvent event){
+        System.exit(0);
+    }
 
-
+    @FXML
+    public void saveGameButtonPressed(ActionEvent event){    }
 }
