@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class Lawn1Controller implements Initializable {
+
     @FXML
     private ImageView zombie1;
     @FXML
@@ -111,20 +112,21 @@ public class Lawn1Controller implements Initializable {
         progressbar();
     }
     public void progressbar(){
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(30), progressbarhead);
-        tt.setFromX(progressbarhead.getX() );
-        tt.setToX( progressbarhead.getX()-160);
-        tt.setCycleCount(1);
-        tt.play();
+        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(30), progressbarhead);
+        translationElement.setCycleCount(1);
+        translationElement.setFromX(progressbarhead.getX() );
+        translationElement.setToX( progressbarhead.getX()-160);
+
+        translationElement.play();
     }
     public void zombiemove() {
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(30), zombie1);
-        tt.setFromX(zombie1.getX() );
-        tt.setToX( zombie1.getX()-400 );
-        tt.setCycleCount(1);
-        tt.play();
+        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(30), zombie1);
+        translationElement.setFromX(zombie1.getX() );
+        translationElement.setToX( zombie1.getX()-400 );
+        translationElement.setCycleCount(1);
+        translationElement.play();
         // to make the the image invisible
-        tt.setOnFinished(new EventHandler<ActionEvent>() {
+        translationElement.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 zombie1.setVisible(false);
@@ -186,12 +188,13 @@ public class Lawn1Controller implements Initializable {
 
         peaOfPlacedPlant.setVisible(true);
         System.out.println("pea");
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(10-(amount/100)*2), peaOfPlacedPlant);
-        tt.setFromX(peaOfPlacedPlant.getX() );
-        tt.setToX( peaOfPlacedPlant.getX()+400- amount );
-        tt.setCycleCount(TranslateTransition.INDEFINITE);
-        tt.setAutoReverse(false);
-        tt.play();
+        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(10-(amount/100)*2), peaOfPlacedPlant);
+        translationElement.setFromX(peaOfPlacedPlant.getX() );
+        translationElement.setCycleCount(TranslateTransition.INDEFINITE);
+        translationElement.setAutoReverse(false);
+        translationElement.setToX( peaOfPlacedPlant.getX()+400- amount );
+
+        translationElement.play();
 
 
     }
