@@ -28,6 +28,7 @@ public class Lawn1Controller implements Initializable {
 
     @FXML
     private ImageView zombie1;
+    @FXML
     private ImageView peashooter_card, onexzero, twoxzero, threexzero, fourxzero, fivexzero, sixxzero, sevenxzero, eightxzero, ninexzero;
 
     @FXML
@@ -40,14 +41,14 @@ public class Lawn1Controller implements Initializable {
         db.setContent(cb);
         event.consume();
     }
-
+    // for lawn
     @FXML
     public void handleDragOver(DragEvent event){
         if(event.getDragboard().hasImage()){
             event.acceptTransferModes(TransferMode.ANY);
         }
     }
-
+    //for lawn
     @FXML
     public void handleDragDrop(DragEvent event) throws FileNotFoundException{
         List<File> files = event.getDragboard().getFiles();
