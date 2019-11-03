@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.animation.Animation;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -29,7 +30,7 @@ public class Lawn1Controller implements Initializable {
     @FXML
     private ImageView zombie1;
     @FXML
-    private ImageView peashooter_card, peaOfPlacedPlant,onexzero, twoxzero, threexzero, fourxzero, fivexzero, sixxzero, sevenxzero, eightxzero, ninexzero;
+    private ImageView peashooter_card, peaOfPlacedPlant1, peaOfPlacedPlant2, peaOfPlacedPlant3, peaOfPlacedPlant4, peaOfPlacedPlant5, peaOfPlacedPlant6, peaOfPlacedPlant7, peaOfPlacedPlant8, peaOfPlacedPlant9, onexzero, twoxzero, threexzero, fourxzero, fivexzero, sixxzero, sevenxzero, eightxzero, ninexzero;
 
     @FXML
     public void handleDragDetected(MouseEvent event) throws FileNotFoundException{
@@ -50,11 +51,60 @@ public class Lawn1Controller implements Initializable {
     }
     //for lawn
     @FXML
-    public void handleDragDrop(DragEvent event) throws FileNotFoundException{
+    public void handleDragDrop1(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         onexzero.setImage(peashooter_img);
         plantAttack(onexzero);
     }
+    @FXML
+    public void handleDragDrop2(DragEvent event) throws FileNotFoundException{
+        Image peashooter_img = event.getDragboard().getImage();
+        twoxzero.setImage(peashooter_img);
+        plantAttack(twoxzero);
+    }
+    @FXML
+    public void handleDragDrop3(DragEvent event) throws FileNotFoundException{
+        Image peashooter_img = event.getDragboard().getImage();
+        threexzero.setImage(peashooter_img);
+        plantAttack(threexzero);
+    }
+    @FXML
+    public void handleDragDrop4(DragEvent event) throws FileNotFoundException{
+        Image peashooter_img = event.getDragboard().getImage();
+        fourxzero.setImage(peashooter_img);
+        plantAttack(fourxzero);
+    }
+    @FXML
+    public void handleDragDrop5(DragEvent event) throws FileNotFoundException{
+        Image peashooter_img = event.getDragboard().getImage();
+        fivexzero.setImage(peashooter_img);
+        plantAttack(fivexzero);
+    }
+    @FXML
+    public void handleDragDrop6(DragEvent event) throws FileNotFoundException{
+        Image peashooter_img = event.getDragboard().getImage();
+        sixxzero.setImage(peashooter_img);
+        plantAttack(sixxzero);
+    }
+    @FXML
+    public void handleDragDrop7(DragEvent event) throws FileNotFoundException{
+        Image peashooter_img = event.getDragboard().getImage();
+        sevenxzero.setImage(peashooter_img);
+        plantAttack(sevenxzero);
+    }@FXML
+    public void handleDragDrop8(DragEvent event) throws FileNotFoundException{
+        Image peashooter_img = event.getDragboard().getImage();
+        eightxzero.setImage(peashooter_img);
+        plantAttack(eightxzero);
+    }@FXML
+    public void handleDragDrop9(DragEvent event) throws FileNotFoundException{
+        Image peashooter_img = event.getDragboard().getImage();
+        ninexzero.setImage(peashooter_img);
+        plantAttack(ninexzero);
+    }
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         zombiemove();
@@ -82,16 +132,57 @@ public class Lawn1Controller implements Initializable {
         double posY = placeHolderPlant.getLayoutY();
         System.out.println(posX);
         System.out.println(posY);
+        String number = placeHolderPlant.getId();
+        double amount = 0;
+        ImageView peaOfPlacedPlant = null;
+        if(number.substring(0,2).equals("on")){
+            peaOfPlacedPlant = peaOfPlacedPlant1;
+
+        }
+        else if(number.substring(0,2).equals("tw")){
+            peaOfPlacedPlant = peaOfPlacedPlant2;
+            amount =45;
+        }
+        else if(number.substring(0,2).equals("th")) {
+            peaOfPlacedPlant = peaOfPlacedPlant3;
+            amount = 90;
+        }
+        else if(number.substring(0,2).equals("fo")){
+            peaOfPlacedPlant = peaOfPlacedPlant4;
+            amount = 180;
+        }
+        else if(number.substring(0,2).equals("fi")){
+            peaOfPlacedPlant = peaOfPlacedPlant5;
+            amount = 225;
+        }
+        else if(number.substring(0,2).equals("si")){
+            peaOfPlacedPlant = peaOfPlacedPlant6;
+            amount = 270;
+        }
+        else if(number.substring(0,2).equals("se")){
+            peaOfPlacedPlant = peaOfPlacedPlant7;
+            amount = 315;
+        }else if(number.substring(0,2).equals("ei")){
+            peaOfPlacedPlant = peaOfPlacedPlant8;
+            amount = 360;
+        }
+        else if(number.substring(0,2).equals("ni")){
+            peaOfPlacedPlant = peaOfPlacedPlant9;
+            amount = 380;
+        }
+
+
 
         peaOfPlacedPlant.setLayoutX(posX);
         peaOfPlacedPlant.setLayoutY(posY);
 
         peaOfPlacedPlant.setVisible(true);
         System.out.println("pea");
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(30), peaOfPlacedPlant);
+        TranslateTransition tt = new TranslateTransition(Duration.seconds(10-(amount/100)*2), peaOfPlacedPlant);
         tt.setFromX(peaOfPlacedPlant.getX() );
-        tt.setToX( peaOfPlacedPlant.getX()+400 );
-        tt.setCycleCount(1);
+        tt.setToX( peaOfPlacedPlant.getX()+400- amount );
+        tt.setCycleCount(TranslateTransition.INDEFINITE);
+        tt.setAutoReverse(false);
         tt.play();
 
 
