@@ -51,8 +51,7 @@ public class Lawn1Controller implements Initializable {
     //for lawn
     @FXML
     public void handleDragDrop(DragEvent event) throws FileNotFoundException{
-        List<File> files = event.getDragboard().getFiles();
-        Image peashooter_img = new Image(new FileInputStream((files.get(0))));
+        Image peashooter_img = event.getDragboard().getImage();
         onexzero.setImage(peashooter_img);
     }
     @Override
