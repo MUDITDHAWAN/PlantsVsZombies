@@ -4,9 +4,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane prefHeight="344.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Lawn1Controller">
    <children>
@@ -15,32 +12,6 @@
             <Image url="@pvz_images/backyard/level1lawngame.jpg" />
          </image>
       </ImageView>
-      <GridPane id="grid" layoutX="150.0" layoutY="154.0" prefHeight="66.0" prefWidth="437.0">
-        <columnConstraints>
-            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="47.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="64.0" minWidth="0.0" prefWidth="46.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="0.0" prefWidth="46.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="43.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="8.0" prefWidth="49.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="10.0" prefWidth="55.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="2.0" prefWidth="45.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="206.0" minWidth="5.0" prefWidth="45.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="202.0" minWidth="10.0" prefWidth="53.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <ImageView fx:id="onexzero" fitHeight="71.0" fitWidth="55.0" onDragDropped="#handleDragDrop" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="twoxzero" fitHeight="80.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-            <ImageView fx:id="threexzero" fitHeight="84.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
-            <ImageView fx:id="fourxzero" fitHeight="79.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
-            <ImageView fx:id="fivexzero" fitHeight="78.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
-            <ImageView fx:id="eightxzero" fitHeight="80.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" />
-            <ImageView fx:id="sevenxzero" fitHeight="93.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
-            <ImageView fx:id="sixxzero" fitHeight="81.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
-         </children>
-      </GridPane>
       <ImageView fitHeight="59.0" fitWidth="55.0" layoutX="95.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pvz_images/backyard/lawn_mower.gif" />
@@ -62,11 +33,24 @@
          </image>
       </ImageView>
       <TextField id="sun_text" layoutX="14.0" layoutY="53.0" prefHeight="11.0" prefWidth="48.0" />
-      <ImageView id="zombie1" fx:id="zombie1" fitHeight="88.0" fitWidth="69.0" layoutX="519.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ninexzero" fitHeight="59.0" fitWidth="62.0" layoutX="528.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView id="zombie1" fx:id="zombie1" fitHeight="88.0" fitWidth="69.0" layoutX="528.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pvz_images/zombie_gifs/zombie_normal.gif" />
          </image>
       </ImageView>
-      <ImageView fx:id="ninexzero" fitHeight="59.0" fitWidth="62.0" layoutX="525.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="onexzero" fitHeight="71.0" fitWidth="55.0" layoutX="150.0" layoutY="146.0" onDragDropped="#handleDragDrop" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="twoxzero" fitHeight="80.0" fitWidth="55.0" layoutX="192.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="threexzero" fitHeight="84.0" fitWidth="52.0" layoutX="241.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="fourxzero" fitHeight="79.0" fitWidth="49.0" layoutX="294.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="fivexzero" fitHeight="78.0" fitWidth="55.0" layoutX="335.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="sixxzero" fitHeight="81.0" fitWidth="61.0" layoutX="383.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="eightxzero" fitHeight="80.0" fitWidth="49.0" layoutX="433.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="eightxzero" fitHeight="76.0" fitWidth="52.0" layoutX="479.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="peaOfPlacedPlant" fitHeight="18.0" fitWidth="69.0" layoutX="381.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@pvz_images/pea/Pea.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

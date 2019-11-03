@@ -29,7 +29,7 @@ public class Lawn1Controller implements Initializable {
     @FXML
     private ImageView zombie1;
     @FXML
-    private ImageView peashooter_card, onexzero, twoxzero, threexzero, fourxzero, fivexzero, sixxzero, sevenxzero, eightxzero, ninexzero;
+    private ImageView peashooter_card, peaOfPlacedPlant,onexzero, twoxzero, threexzero, fourxzero, fivexzero, sixxzero, sevenxzero, eightxzero, ninexzero;
 
     @FXML
     public void handleDragDetected(MouseEvent event) throws FileNotFoundException{
@@ -53,6 +53,7 @@ public class Lawn1Controller implements Initializable {
     public void handleDragDrop(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         onexzero.setImage(peashooter_img);
+        plantAttack(onexzero);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -72,8 +73,29 @@ public class Lawn1Controller implements Initializable {
             }
         });
 
-    }
 
+
+
+    }
+    public void plantAttack(ImageView placeHolderPlant) throws FileNotFoundException{
+        double posX= placeHolderPlant.getLayoutX()+placeHolderPlant.getFitWidth();
+        double posY = placeHolderPlant.getLayoutY();
+        System.out.println(posX);
+        System.out.println(posY);
+
+        peaOfPlacedPlant.setLayoutX(posX);
+        peaOfPlacedPlant.setLayoutY(posY);
+
+        peaOfPlacedPlant.setVisible(true);
+        System.out.println("pea");
+        TranslateTransition tt = new TranslateTransition(Duration.seconds(30), peaOfPlacedPlant);
+        tt.setFromX(peaOfPlacedPlant.getX() );
+        tt.setToX( peaOfPlacedPlant.getX()+400 );
+        tt.setCycleCount(1);
+        tt.play();
+
+
+    }
 
 
 }
