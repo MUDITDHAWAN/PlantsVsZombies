@@ -137,24 +137,24 @@ public class Level1 extends Level implements Initializable {
         translationElement.play();
     }
     public void zombiemove() {
-//         TranslateTransition translationElement = new TranslateTransition(Duration.seconds(30), zombie1);
-//         translationElement.setFromX(zombie1.getX() );
-//         translationElement.setToX( zombie1.getX()-400 );
-//         translationElement.setCycleCount(1);
-//         translationElement.play();
-//         // to make the the image invisible
-//         translationElement.setOnFinished(new EventHandler<ActionEvent>() {
-//             @Override
-//             public void handle(ActionEvent event) {
-//                 zombie1.setVisible(false);
-//             }
-//         });
-        
-         Timeline timeline = new Timeline();
-        KeyValue keyvalue = new KeyValue(zombie1.translateXProperty(),-400);
-        KeyFrame keyframe = new KeyFrame(Duration.seconds(30),keyvalue);
-        timeline.getKeyFrames().add(keyframe);
-        timeline.play();
+        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(30), zombie1);
+        translationElement.setFromX(zombie1.getX() );
+        translationElement.setToX( zombie1.getX()-400 );
+        translationElement.setCycleCount(1);
+        translationElement.play();
+        // to make the the image invisible
+        translationElement.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                zombie1.setVisible(false);
+            }
+        });
+
+//         Timeline timeline = new Timeline();
+//        KeyValue keyvalue = new KeyValue(zombie1.translateXProperty(),-400);
+//        KeyFrame keyframe = new KeyFrame(Duration.seconds(30),keyvalue);
+//        timeline.getKeyFrames().add(keyframe);
+//        timeline.play();
 
 
 
@@ -211,13 +211,37 @@ public class Level1 extends Level implements Initializable {
 
         peaOfPlacedPlant.setVisible(true);
         System.out.println("pea");
-        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(10-(amount/100)*2), peaOfPlacedPlant);
-        translationElement.setFromX(peaOfPlacedPlant.getX() );
-        translationElement.setCycleCount(TranslateTransition.INDEFINITE);
-        translationElement.setAutoReverse(false);
-        translationElement.setToX( peaOfPlacedPlant.getX()+400- amount );
+//        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(10-(amount/100)*2), peaOfPlacedPlant);
+//        translationElement.setFromX(peaOfPlacedPlant.getX() );
+//        translationElement.setCycleCount(TranslateTransition.INDEFINITE);
+//        translationElement.setAutoReverse(false);
+//        translationElement.setToX( peaOfPlacedPlant.getX()+400- amount );
+//
+//        translationElement.play();
 
-        translationElement.play();
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(timeline.INDEFINITE);
+        ImageView finalPeaOfPlacedPlant = peaOfPlacedPlant;
+        KeyValue keyvalue = new KeyValue(peaOfPlacedPlant.translateXProperty(), 400, new Interpolator() {
+            double posx = finalPeaOfPlacedPlant.getLayoutX();
+            @Override
+            protected double curve(double v) {
+
+                if (finalPeaOfPlacedPlant.getLayoutX()<600){
+                    finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+2);
+                }
+                else{
+                    finalPeaOfPlacedPlant.setLayoutX(posx);
+                    finalPeaOfPlacedPlant.setVisible(true);
+                }
+
+                checkCollision(finalPeaOfPlacedPlant,zombie1);
+                return 0;
+            }
+        });
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(5),keyvalue);
+        timeline.getKeyFrames().add(keyframe);
+        timeline.play();
 
 
     }
@@ -228,11 +252,15 @@ public class Level1 extends Level implements Initializable {
 
     @FXML
     public void saveGameButtonPressed(ActionEvent event){    }
-    
-     public void checkCollision(ImageView a,ImageView b){
-        System.out.println(a.getLayoutBounds().intersects(b.getLayoutBounds()));
-        System.out.println(a.getLayoutBounds()+" layoutBound a x");
-        System.out.println(b.getLayoutBounds());
+
+    public void checkCollision(ImageView a,ImageView b){
+        System.out.println(a.getBoundsInParent().intersects(b.getBoundsInParent()));
+        System.out.println(a.getLayoutX());
+        if (a.getBoundsInParent().intersects(b.getBoundsInParent())){
+            a.setVisible(false);
+        }
+//        System.out.println(a.getBoundsInParent()+" layoutBound a x");
+//        System.out.println(b.getBoundsInParent());
 
     }
 }
