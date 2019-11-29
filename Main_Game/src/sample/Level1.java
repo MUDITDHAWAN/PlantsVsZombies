@@ -60,7 +60,13 @@ public class Level1 extends Level implements Initializable {
         db.setContent(cb);
         event.consume();
     }
+    public void handlePlantCollision(ImageView plant){
+        if(plant.getBoundsInParent().intersects(zombie1.getBoundsInParent())){
+            System.out.println("collision between "+plant.getId()+" "+zombie1.getId()+" ");
+        }
+    }
     // for lawn
+
     @FXML
     public void handleDragOver(DragEvent event){
         if(event.getDragboard().hasImage()){
@@ -72,52 +78,62 @@ public class Level1 extends Level implements Initializable {
     public void handleDragDrop1(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         onexzero.setImage(peashooter_img);
+        handlePlantCollision(onexzero);
         plantAttack(onexzero);
+
     }
     @FXML
     public void handleDragDrop2(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         twoxzero.setImage(peashooter_img);
+        handlePlantCollision(twoxzero);
         plantAttack(twoxzero);
     }
     @FXML
     public void handleDragDrop3(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         threexzero.setImage(peashooter_img);
+        handlePlantCollision(threexzero);
         plantAttack(threexzero);
     }
     @FXML
     public void handleDragDrop4(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         fourxzero.setImage(peashooter_img);
+        handlePlantCollision(fourxzero);
         plantAttack(fourxzero);
     }
     @FXML
     public void handleDragDrop5(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         fivexzero.setImage(peashooter_img);
+        handlePlantCollision(fivexzero);
         plantAttack(fivexzero);
     }
     @FXML
     public void handleDragDrop6(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         sixxzero.setImage(peashooter_img);
+        handlePlantCollision(sixxzero);
         plantAttack(sixxzero);
     }
     @FXML
     public void handleDragDrop7(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         sevenxzero.setImage(peashooter_img);
+        handlePlantCollision(sevenxzero);
         plantAttack(sevenxzero);
     }@FXML
     public void handleDragDrop8(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         eightxzero.setImage(peashooter_img);
+        handlePlantCollision(eightxzero);
         plantAttack(eightxzero);
     }@FXML
     public void handleDragDrop9(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         ninexzero.setImage(peashooter_img);
+        handlePlantCollision(ninexzero);
         plantAttack(ninexzero);
     }
 
@@ -226,7 +242,13 @@ public class Level1 extends Level implements Initializable {
             double posx = finalPeaOfPlacedPlant.getLayoutX();
             @Override
             protected double curve(double v) {
+                if(placeHolderPlant.getBoundsInParent().intersects(zombie1.getBoundsInParent())){
 
+                    System.out.println("collision between "+placeHolderPlant.getId()+" "+zombie1.getId());
+
+                    placeHolderPlant.setVisible(false);
+                    finalPeaOfPlacedPlant.setVisible(false);
+                }
                 if (finalPeaOfPlacedPlant.getLayoutX()<600){
                     finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+2);
                 }
@@ -254,8 +276,8 @@ public class Level1 extends Level implements Initializable {
     public void saveGameButtonPressed(ActionEvent event){    }
 
     public void checkCollision(ImageView a,ImageView b){
-        System.out.println(a.getBoundsInParent().intersects(b.getBoundsInParent()));
-        System.out.println(a.getLayoutX());
+//        System.out.println("collision between "+ a.getId()+" " +b.getId()+ " "+ a.getBoundsInParent().intersects(b.getBoundsInParent()));
+//        System.out.println(a.getLayoutX());
         if (a.getBoundsInParent().intersects(b.getBoundsInParent())){
             a.setVisible(false);
         }
