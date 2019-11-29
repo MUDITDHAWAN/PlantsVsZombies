@@ -139,18 +139,24 @@ public class Level1 extends Level implements Initializable {
         translationElement.play();
     }
     public void zombiemove() {
-        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(30), zombie1);
-        translationElement.setFromX(zombie1.getX() );
-        translationElement.setToX( zombie1.getX()-400 );
-        translationElement.setCycleCount(1);
-        translationElement.play();
-        // to make the the image invisible
-        translationElement.setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                zombie1.setVisible(false);
-            }
-        });
+//         TranslateTransition translationElement = new TranslateTransition(Duration.seconds(30), zombie1);
+//         translationElement.setFromX(zombie1.getX() );
+//         translationElement.setToX( zombie1.getX()-400 );
+//         translationElement.setCycleCount(1);
+//         translationElement.play();
+//         // to make the the image invisible
+//         translationElement.setOnFinished(new EventHandler<ActionEvent>() {
+//             @Override
+//             public void handle(ActionEvent event) {
+//                 zombie1.setVisible(false);
+//             }
+//         });
+        
+         Timeline timeline = new Timeline();
+        KeyValue keyvalue = new KeyValue(zombie1.translateXProperty(),-400);
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(30),keyvalue);
+        timeline.getKeyFrames().addAll(keyframe);
+        timeline.play();
 
 
 
@@ -224,4 +230,11 @@ public class Level1 extends Level implements Initializable {
 
     @FXML
     public void saveGameButtonPressed(ActionEvent event){    }
+    
+     public void checkCollision(ImageView a,ImageView b){
+        System.out.println(a.getLayoutBounds().intersects(b.getLayoutBounds()));
+        System.out.println(a.getLayoutBounds()+" layoutBound a x");
+        System.out.println(b.getLayoutBounds());
+
+    }
 }
