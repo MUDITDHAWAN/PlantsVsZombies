@@ -26,7 +26,26 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class Lawn1Controller implements Initializable {
+public class Level1 extends Level implements Initializable {
+
+    public Level1 (){
+        int number_of_Zombies= 3;
+
+        for(int i=0; i< number_of_Zombies; i++){
+            arrayList_Zombie.add( new Zombie());
+        }
+        number_Tracks= 1;
+
+        level_Number =1;
+
+        for(int j=0 ; j<number_Tracks; j++){
+            array_Lawnmower.add(new LawnMower());
+        }
+
+        plants_Available.add( new ProjectileShooter());
+
+
+    }
 
     @FXML
     private ImageView zombie1;

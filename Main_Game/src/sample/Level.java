@@ -4,12 +4,12 @@ import java.sql.Array;
 import java.util.ArrayList;
 
 public class Level {
-    protected ArrayList<Zombie> arrayList_Zombie ;
+    protected ArrayList<Zombie> arrayList_Zombie = new ArrayList<>();
     protected int number_Tracks;
     protected int level_Number;
-    protected ArrayList<LawnMower> array_Lawnmower;
-    protected ArrayList<Plant> plants_Available;
-    public ArrayList<Plant> plants_Used;
+    protected ArrayList<LawnMower> array_Lawnmower = new ArrayList<>();
+    protected ArrayList<Plant> plants_Available  = new ArrayList<>();
+    public ArrayList<Plant> plants_Used = new ArrayList<>();
 
     public ArrayList<Zombie> getArrayList_Zombie(){ return arrayList_Zombie;}
 
