@@ -30,61 +30,30 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception, FileNotFoundException {
-
-        Parent root = FXMLLoader.load(getClass().getResource("mainpage.fxml"));
+        LoginPage login = new LoginPage();
+        Parent root = FXMLLoader.load(getClass().getResource("loginpage.fxml"));
         primaryStage.setTitle("Test");
         Scene s1 = new Scene(root,600,400);
 
         primaryStage.show();
         primaryStage.setScene(s1);
-        
-
-
-//        primaryStage.setScene(s2);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-       ;
-
-
-    
+//        Parent root_new = FXMLLoader.load(getClass().getResource("mainpage.fxml"));
+////        primaryStage.setTitle("Test");
+//        Scene s2 = new Scene(root_new,600,400);
 //
-
-
-
-
-
-        // Login page and selecting Day
-
-
-
+//        primaryStage.show();
+//        primaryStage.setScene(s2);
+//        System.out.println("forward");
 
 
     }
-
-    public void f2(){
-        System.out.println("ohno");
-    }
-    public void f1(){
-        System.out.println("kya yeh chal gaya?");
-    }
-
-
 
     public static void main(String[] args) {
+
+
         launch(args);
     }
 }
