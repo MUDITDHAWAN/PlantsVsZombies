@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="346.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Level2">
+   <children>
+      <ImageView fitHeight="386.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pvz_images/backyard/level2lawngame.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="92.0" fitWidth="295.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pvz_images/plant_cards/boardimage.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="98.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pvz_images/plant_cards/board.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="peashooter_card" fitHeight="85.0" fitWidth="77.0" layoutX="92.0" onDragDetected="#handleDragDetectedPeashooter" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pvz_images/plant_cards/card_peashooter.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sunflower_card" fitHeight="85.0" fitWidth="77.0" layoutX="153.0" onDragDetected="#handleDragDetectedSunflower" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pvz_images/plant_cards/card_sunflower.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="onexzero" fitHeight="64.0" fitWidth="53.0" layoutX="148.0" layoutY="86.0" onDragDropped="#handleDragDrop10" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="twoxzero" fitHeight="64.0" fitWidth="47.0" layoutX="195.0" layoutY="86.0" onDragDropped="#handleDragDrop20" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="threexzero" fitHeight="64.0" fitWidth="53.0" layoutX="242.0" layoutY="86.0" onDragDropped="#handleDragDrop30" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="onexone" fitHeight="58.0" fitWidth="61.0" layoutX="142.0" layoutY="150.0" onDragDropped="#handleDragDrop11" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="twoxone" fitHeight="58.0" fitWidth="47.0" layoutX="195.0" layoutY="150.0" onDragDropped="#handleDragDrop21" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="threexone" fitHeight="58.0" fitWidth="53.0" layoutX="236.0" layoutY="150.0" onDragDropped="#handleDragDrop31" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="onextwo" fitHeight="64.0" fitWidth="60.0" layoutX="142.0" layoutY="208.0" onDragDropped="#handleDragDrop12" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="twoxtwo" fitHeight="58.0" fitWidth="47.0" layoutX="195.0" layoutY="208.0" onDragDropped="#handleDragDrop22" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="threextwo" fitHeight="58.0" fitWidth="60.0" layoutX="236.0" layoutY="208.0" onDragDropped="#handleDragDrop32" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="lawnmower1" fitHeight="64.0" fitWidth="61.0" layoutX="83.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pvz_images/backyard/lawn_mower.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="lawnmower2" fitHeight="64.0" fitWidth="61.0" layoutX="83.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pvz_images/backyard/lawn_mower.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="lawnmower3" fitHeight="64.0" fitWidth="61.0" layoutX="83.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pvz_images/backyard/lawn_mower.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

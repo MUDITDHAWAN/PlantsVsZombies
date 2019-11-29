@@ -38,13 +38,19 @@ public class ChooseLevelController  {
         stage.show();
         stage.setScene(scene);
     }
-  public void changeScene3(ActionEvent event) throws IOException {
+  public void changeScene3(ActionEvent event) throws IOException, InterruptedException  {
       createScene(lawn3,"lawnLevel3.fxml",event);
-
+      for(int i = 0;i<5;i++){
+          Thread.sleep(1000);
+      }
+      stage.setScene(new Scene( FXMLLoader.load(getClass().getResource("Level3.fxml"))));
   }
-    public void changeScene2(ActionEvent event) throws IOException {
+    public void changeScene2(ActionEvent event) throws IOException, InterruptedException {
         createScene(lawn2,"lawnLevel2.fxml",event);
-
+        for(int i = 0;i<5;i++){
+            Thread.sleep(1000);
+        }
+        stage.setScene(new Scene( FXMLLoader.load(getClass().getResource("Level2.fxml"))));
     }
     public void changeScene1(ActionEvent event) throws IOException, InterruptedException {
         createScene(lawn1,"lawnLevel1.fxml",event);
