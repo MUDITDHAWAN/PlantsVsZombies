@@ -3,6 +3,8 @@ package sample;
 public abstract class Character {
     protected int health;
     protected int pos_x; protected int pos_y;
+    protected String fx_id;
+
 
     public Character() {
     }
