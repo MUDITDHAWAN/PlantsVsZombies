@@ -153,7 +153,7 @@ public class Level1 extends Level implements Initializable {
          Timeline timeline = new Timeline();
         KeyValue keyvalue = new KeyValue(zombie1.translateXProperty(),-400);
         KeyFrame keyframe = new KeyFrame(Duration.seconds(30),keyvalue);
-        timeline.getKeyFrames().addAll(keyframe);
+        timeline.getKeyFrames().add(keyframe);
         timeline.play();
 
 
