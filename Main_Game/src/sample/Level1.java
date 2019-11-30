@@ -26,7 +26,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class Level1 extends Level implements Initializable {
-
+    @FXML
+    private Stage stage;
+    @FXML
+    Parent login;
     public Level1 (){
         int number_of_Zombies= 3;
 
@@ -55,6 +58,13 @@ public class Level1 extends Level implements Initializable {
     @FXML
     private ImageView peashooter_card,progressbarhead, progressbar2,  peaOfPlacedPlant1, peaOfPlacedPlant2, peaOfPlacedPlant3, peaOfPlacedPlant4, peaOfPlacedPlant5, peaOfPlacedPlant6, peaOfPlacedPlant7, peaOfPlacedPlant8, peaOfPlacedPlant9, onexzero, twoxzero, threexzero, fourxzero, fivexzero, sixxzero, sevenxzero, eightxzero, ninexzero;
 
+    private void createScene(Parent p,String fxmlfile,ActionEvent event) throws IOException {
+        p =  FXMLLoader.load(getClass().getResource(fxmlfile));
+        Scene scene = new Scene(p);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.show();
+        stage.setScene(scene);
+    }
     @FXML
     public void handleDragDetected(MouseEvent event) throws FileNotFoundException{
         Dragboard db = peashooter_card.startDragAndDrop((TransferMode.ANY));
@@ -289,8 +299,7 @@ public class Level1 extends Level implements Initializable {
         System.exit(0);
     }
 
-    @FXML
-    public void saveGameButtonPressed(ActionEvent event){    }
+
 
     public void checkCollision(ImageView a,ImageView b){
 //        System.out.println("collision between "+ a.getId()+" " +b.getId()+ " "+ a.getBoundsInParent().intersects(b.getBoundsInParent()));
@@ -313,6 +322,12 @@ public class Level1 extends Level implements Initializable {
         }
 //        System.out.println(a.getBoundsInParent()+" layoutBound a x");
 //        System.out.println(b.getBoundsInParent());
+
+    }
+    @FXML
+    public void onSaveGame(ActionEvent event) throws IOException {
+
+        createScene(login,"loginpage.fxml",event);
 
     }
 }

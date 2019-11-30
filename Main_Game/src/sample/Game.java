@@ -1,5 +1,6 @@
 package sample;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class Game {
@@ -62,12 +63,34 @@ public class Game {
         return list_Players;
     }
 
-    public void serialze(){
+    public void serialze() throws IOException{
 
+
+        ObjectOutputStream out = null;
+            try {
+                out = new ObjectOutputStream (
+                        new FileOutputStream("out.txt"));
+                out.writeObject(this);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                out.close();
+            }
     }
 
-    public void deserialize(){
-
+    public static Game deserialize() throws IOException, ClassNotFoundException {
+            Game open = null;
+            ObjectInputStream in = null;
+            try {
+                 in = new ObjectInputStream (
+                         new FileInputStream("out.txt"));
+                 open = (Game)in.readObject();
+                 } finally {
+                 in.close();
+                 return open;
+                 }
     }
 
 

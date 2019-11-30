@@ -74,8 +74,21 @@ public class LoginPage {
         System.out.println(username);
         pvz = new Game(getUsername());
         createScene(mainpage,"mainpage.fxml",event);
+//        pvz.serialze();
+//        System.out.println("test");
 
 
+    }
+
+    @FXML
+    public void onSerialize(ActionEvent event) throws IOException {
+//        System.out.println(pvz.current_Player.getUsername());
+//        pvz.serialze();
+    }
+
+    @FXML
+    public void onDeserialize(ActionEvent event) throws IOException, ClassNotFoundException {
+        pvz = Game.deserialize();
     }
 
     }
