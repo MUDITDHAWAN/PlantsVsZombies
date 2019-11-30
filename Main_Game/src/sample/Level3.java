@@ -1405,8 +1405,8 @@ public class Level3 extends Level implements Initializable {
     }
 
     @FXML
-    public void quitButtonPressed(ActionEvent event){
-        System.exit(0);
+    public void quitButtonPressed(ActionEvent event) throws IOException {
+        createScene(mainscreen,"mainpage.fxml",event);
     }
     @FXML
     public void onPause(ActionEvent event){
