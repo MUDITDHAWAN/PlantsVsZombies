@@ -142,25 +142,27 @@ public class Level3 extends Level implements Initializable {
 
     @FXML
     public void handleDragDetectedWalnut(MouseEvent event) throws FileNotFoundException{
-        Dragboard db = sunflower_card.startDragAndDrop((TransferMode.ANY));
+        if(getSun_tokens()>=50)
+        {Dragboard db = sunflower_card.startDragAndDrop((TransferMode.ANY));
         ClipboardContent cb = new ClipboardContent();
         FileInputStream inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\plant_gifs\\Wallnut_body.png");
         Image peashooter_img = new Image(inputstream);
         cb.putImage(peashooter_img);
         cb.putString("walnut");
         db.setContent(cb);
-        event.consume();
+        event.consume();}
     }
     @FXML
     public void handleDragDetectedCherrybomb(MouseEvent event) throws FileNotFoundException{
-        Dragboard db = sunflower_card.startDragAndDrop((TransferMode.ANY));
+        if(getSun_tokens()>=150)
+        {Dragboard db = sunflower_card.startDragAndDrop((TransferMode.ANY));
         ClipboardContent cb = new ClipboardContent();
         FileInputStream inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\plant_gifs\\cherrybomb.png");
         Image peashooter_img = new Image(inputstream);
         cb.putImage(peashooter_img);
         cb.putString("cherry");
         db.setContent(cb);
-        event.consume();
+        event.consume();}
     }
     // for lawn
     @FXML
@@ -184,6 +186,15 @@ public class Level3 extends Level implements Initializable {
             sunGenerate(onexzero);
             addSun_tokens(-50);
         }
+        if (type.equalsIgnoreCase("walnut")){
+
+            addSun_tokens(-50);
+        }
+        if (type.equalsIgnoreCase("cherry")){
+
+            addSun_tokens(-150);
+            plantBombCollision(onexzero);
+        }
     }
     @FXML
     public void handleDragDrop20(DragEvent event) throws FileNotFoundException{
@@ -196,8 +207,18 @@ public class Level3 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(twoxzero);
             addSun_tokens(-50);
+            sunGenerate(twoxzero);
+
+        }
+        if (type.equalsIgnoreCase("walnut")){
+
+            addSun_tokens(-50);
+        }
+        if (type.equalsIgnoreCase("cherry")){
+
+            addSun_tokens(-150);
+            plantBombCollision(twoxzero);
         }
     }
     @FXML
@@ -211,8 +232,19 @@ public class Level3 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(threexzero);
             addSun_tokens(-50);
+            sunGenerate(threexzero);
+
+
+
+        }
+        if (type.equalsIgnoreCase("walnut")){
+            addSun_tokens(-50);
+
+        }
+        if (type.equalsIgnoreCase("cherry")){
+            addSun_tokens(-150);
+            plantBombCollision(threexzero);
         }
     }
 
@@ -227,8 +259,18 @@ public class Level3 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(onexone);
             addSun_tokens(-50);
+            sunGenerate(onexone);
+
+        }
+        if (type.equalsIgnoreCase("walnut")){
+            addSun_tokens(-50);
+
+        }
+        if (type.equalsIgnoreCase("cherry")){
+            addSun_tokens(-150);
+            plantBombCollision(onexone);
+
         }
     }
     @FXML
@@ -242,8 +284,18 @@ public class Level3 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(twoxone);
             addSun_tokens(-50);
+            sunGenerate(twoxone);
+
+        }
+        if (type.equalsIgnoreCase("walnut")){
+            addSun_tokens(-50);
+
+        }
+        if (type.equalsIgnoreCase("cherry")){
+            addSun_tokens(-150);
+            plantBombCollision(twoxone);
+
         }
     }
     @FXML
@@ -257,8 +309,17 @@ public class Level3 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(threexone);
             addSun_tokens(-50);
+            sunGenerate(threexone);
+
+        }
+        if (type.equalsIgnoreCase("walnut")){
+            addSun_tokens(-50);
+
+        }
+        if (type.equalsIgnoreCase("cherry")){
+            addSun_tokens(-150);
+            plantBombCollision(threexone);
         }
     }
 
@@ -273,8 +334,17 @@ public class Level3 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(onextwo);
             addSun_tokens(-50);
+            sunGenerate(onextwo);
+
+        }
+        if (type.equalsIgnoreCase("walnut")){
+            addSun_tokens(-50);
+
+        }
+        if (type.equalsIgnoreCase("cherry")){
+            addSun_tokens(-150);
+            plantBombCollision(onextwo);
         }
     }
     @FXML
@@ -288,8 +358,17 @@ public class Level3 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(twoxtwo);
             addSun_tokens(-50);
+            sunGenerate(twoxtwo);
+
+        }
+        if (type.equalsIgnoreCase("walnut")){
+            addSun_tokens(-50);
+
+        }
+        if (type.equalsIgnoreCase("cherry")){
+            addSun_tokens(-150);
+            plantBombCollision(twoxtwo);
         }
     }
     @FXML
@@ -303,8 +382,18 @@ public class Level3 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(threextwo);
             addSun_tokens(-50);
+            sunGenerate(threextwo);
+
+        }
+        if (type.equalsIgnoreCase("walnut")){
+            addSun_tokens(-50);
+
+        }
+        if (type.equalsIgnoreCase("cherry")){
+            addSun_tokens(-150);
+            plantBombCollision(threextwo);
+
         }
     }
 
@@ -319,8 +408,18 @@ public class Level3 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(onexthree);
             addSun_tokens(-50);
+            sunGenerate(onexthree);
+
+        }
+        if (type.equalsIgnoreCase("walnut")){
+            addSun_tokens(-50);
+
+        }
+        if (type.equalsIgnoreCase("cherry")){
+            plantBombCollision(onexthree);
+            addSun_tokens(-150);
+
         }
     }
     @FXML
@@ -334,8 +433,18 @@ public class Level3 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(twoxthree);
             addSun_tokens(-50);
+            sunGenerate(twoxthree);
+
+        }
+        if (type.equalsIgnoreCase("walnut")){
+            addSun_tokens(-50);
+
+        }
+        if (type.equalsIgnoreCase("cherry")){
+            addSun_tokens(-150);
+            plantBombCollision(twoxthree);
+
         }
     }
     @FXML
@@ -349,8 +458,18 @@ public class Level3 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(threexthree);
             addSun_tokens(-50);
+            sunGenerate(threexthree);
+
+        }
+        if (type.equalsIgnoreCase("walnut")){
+            addSun_tokens(-50);
+
+        }
+        if (type.equalsIgnoreCase("cherry")){
+            addSun_tokens(-150);
+            plantBombCollision(threexthree);
+
         }
     }
 
@@ -365,8 +484,18 @@ public class Level3 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(onexfour);
             addSun_tokens(-50);
+            sunGenerate(onexfour);
+
+        }
+        if (type.equalsIgnoreCase("walnut")){
+            addSun_tokens(-50);
+
+        }
+        if (type.equalsIgnoreCase("cherry")){
+            addSun_tokens(-150);
+            plantBombCollision(onexfour);
+
         }
     }
     @FXML
@@ -380,8 +509,20 @@ public class Level3 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(twoxfour);
             addSun_tokens(-50);
+            sunGenerate(twoxfour);
+
+
+
+        }
+        if (type.equalsIgnoreCase("walnut")){
+            addSun_tokens(-50);
+
+        }
+        if (type.equalsIgnoreCase("cherry")){
+            addSun_tokens(-150);
+            plantBombCollision(twoxfour);
+
         }
     }
     @FXML
@@ -395,8 +536,20 @@ public class Level3 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(threexfour);
             addSun_tokens(-50);
+            sunGenerate(threexfour);
+
+
+
+        }
+        if (type.equalsIgnoreCase("walnut")){
+            addSun_tokens(-50);
+
+        }
+        if (type.equalsIgnoreCase("cherry")){
+            addSun_tokens(-150);
+            plantBombCollision(threexfour);
+
         }
     }
 
@@ -762,6 +915,149 @@ public class Level3 extends Level implements Initializable {
 
     }
 
+    public void plantCollision(ImageView plant){
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(timeline.INDEFINITE);
+
+        KeyValue keyvalue = new KeyValue(plant.translateXProperty(), plant.getLayoutX(), new Interpolator() {
+            @Override
+            protected double curve(double v) {
+                for(int i = 0;i<zombies1.size();i++){
+                    if(zombies1.get(i).getBoundsInParent().intersects(plant.getBoundsInParent())){
+                        plant.setVisible(false);
+                    }
+                }
+                for(int i = 0;i<zombies2.size();i++){
+                    if(zombies2.get(i).getBoundsInParent().intersects(plant.getBoundsInParent())){
+                        plant.setVisible(false);
+                    }
+                }
+                for(int i = 0;i<zombies3.size();i++){
+                    if(zombies3.get(i).getBoundsInParent().intersects(plant.getBoundsInParent())){
+                        plant.setVisible(false);
+                    }
+                }
+                return 0;
+            }
+        });
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(10),keyvalue);
+        timeline.getKeyFrames().add(keyframe);
+        timeline.play();
+    }
+
+    public void plantBombCollision(ImageView plant){
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(timeline.INDEFINITE);
+
+        KeyValue keyvalue = new KeyValue(plant.translateXProperty(), plant.getLayoutX(), new Interpolator() {
+            @Override
+            protected double curve(double v) {
+                for (int j = 0; j < zombies1.size(); j++){
+                    ImageView b = zombies1.get(j);
+                    if (plant.getBoundsInParent().intersects(b.getBoundsInParent())) {
+
+                        for (int i = 0; i < arrayList_Zombie.size(); i++) {
+                            if ((b.getId()).equals(arrayList_Zombie.get(i).getFx_id())) {
+                                arrayList_Zombie.get(i).setHealth(0);
+                                plant.setLayoutX(plant.getLayoutY()+3000);
+                                System.out.println(arrayList_Zombie.get(i).getHealth());
+                                if (arrayList_Zombie.get(i).getHealth() == 0) {
+                                    b.setVisible(false);
+                                    b.setLayoutX(b.getLayoutX() - 10000);
+
+                                }
+                            }
+                        }
+                        plant.setVisible(false);
+                    }}
+                for(int j = 0;j<zombies2.size();j++){
+                    ImageView b = zombies2.get(j);
+                    if (plant.getBoundsInParent().intersects(b.getBoundsInParent())) {
+
+                        for (int i = 0; i < arrayList_Zombie.size(); i++) {
+                            if ((b.getId()).equals(arrayList_Zombie.get(i).getFx_id())) {
+                                arrayList_Zombie.get(i).setHealth(0);
+                                plant.setLayoutX(plant.getLayoutY()+3000);
+                                plant.setVisible(false);
+                                System.out.println(arrayList_Zombie.get(i).getHealth());
+                                if (arrayList_Zombie.get(i).getHealth() == 0) {
+                                    b.setVisible(false);
+                                    b.setLayoutX(b.getLayoutX() - 10000);
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+                for(int j = 0;j<zombies3.size();j++){
+                    ImageView b = zombies3.get(j);
+                    if (plant.getBoundsInParent().intersects(b.getBoundsInParent())) {
+
+                        for (int i = 0; i < arrayList_Zombie.size(); i++) {
+                            if ((b.getId()).equals(arrayList_Zombie.get(i).getFx_id())) {
+                                arrayList_Zombie.get(i).setHealth(0);
+                                plant.setLayoutX(plant.getLayoutY()+3000);
+                                plant.setVisible(false);
+                                System.out.println(arrayList_Zombie.get(i).getHealth());
+                                if (arrayList_Zombie.get(i).getHealth() == 0) {
+                                    b.setVisible(false);
+                                    b.setLayoutX(b.getLayoutX() - 10000);
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+                for(int j = 0;j<zombies4.size();j++){
+                    ImageView b = zombies4.get(j);
+                    if (plant.getBoundsInParent().intersects(b.getBoundsInParent())) {
+
+                        for (int i = 0; i < arrayList_Zombie.size(); i++) {
+                            if ((b.getId()).equals(arrayList_Zombie.get(i).getFx_id())) {
+                                arrayList_Zombie.get(i).setHealth(0);
+                                plant.setLayoutX(plant.getLayoutY()+3000);
+                                plant.setVisible(false);
+                                System.out.println(arrayList_Zombie.get(i).getHealth());
+                                if (arrayList_Zombie.get(i).getHealth() == 0) {
+                                    b.setVisible(false);
+                                    b.setLayoutX(b.getLayoutX() - 10000);
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+                for(int j = 0;j<zombies5.size();j++){
+                    ImageView b = zombies5.get(j);
+                    if (plant.getBoundsInParent().intersects(b.getBoundsInParent())) {
+
+                        for (int i = 0; i < arrayList_Zombie.size(); i++) {
+                            if ((b.getId()).equals(arrayList_Zombie.get(i).getFx_id())) {
+                                arrayList_Zombie.get(i).setHealth(0);
+                                plant.setLayoutX(plant.getLayoutY()+3000);
+                                plant.setVisible(false);
+                                System.out.println(arrayList_Zombie.get(i).getHealth());
+                                if (arrayList_Zombie.get(i).getHealth() == 0) {
+                                    b.setVisible(false);
+                                    b.setLayoutX(b.getLayoutX() - 10000);
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+                return 0;
+            }
+        });
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(10),keyvalue);
+        timeline.getKeyFrames().add(keyframe);
+        timeline.play();
+    }
 
     public void checkCollision(ImageView a,ImageView b){
         if (a.getBoundsInParent().intersects(b.getBoundsInParent())){
