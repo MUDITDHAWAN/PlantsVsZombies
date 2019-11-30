@@ -110,7 +110,7 @@ public class Level3 extends Level implements Initializable {
     @FXML
     private Label number_suns;
     @FXML
-    private ImageView lawnmower1, lawnmower2, lawnmower3, lawnmower4, lawnmower5, suntoken, peashooter_card,sunflower_card,walnut_card, cherrybomb_card, onexzero, twoxzero, threexzero, onexone, twoxone, threexone, onextwo, twoxtwo, threextwo, onexthree, twoxthree, threexthree, onexfour, twoxfour, threexfour ;
+    private ImageView lawnmower1, progressbarhead, progressbar2,lawnmower2, lawnmower3, lawnmower4, lawnmower5, suntoken, peashooter_card,sunflower_card,walnut_card, cherrybomb_card, onexzero, twoxzero, threexzero, onexone, twoxone, threexone, onextwo, twoxtwo, threextwo, onexthree, twoxthree, threexthree, onexfour, twoxfour, threexfour ;
 
     @FXML
     public void getSuntoken( MouseEvent event) {
@@ -566,6 +566,7 @@ public class Level3 extends Level implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        progressbar();
         zombiemove1();
         zombiemove2();
         zombiemove3();
@@ -653,6 +654,14 @@ public class Level3 extends Level implements Initializable {
             t -= 100;
         }
 
+    }
+    public void progressbar(){
+        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(30), progressbarhead);
+        translationElement.setCycleCount(1);
+        translationElement.setFromX(progressbarhead.getX() );
+        translationElement.setToX( progressbarhead.getX()-160);
+
+        translationElement.play();
     }
     public void zombiemove3() {
 //

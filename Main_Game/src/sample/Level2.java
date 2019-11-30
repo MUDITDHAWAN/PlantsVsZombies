@@ -60,7 +60,7 @@ public class Level2 extends Level implements Initializable {
     @FXML
     private Label number_suns;
     @FXML
-    private ImageView lawnmower1, lawnmower2, lawnmower3, suntoken,peashooter_card,sunflower_card, onexzero, twoxzero, threexzero, onexone, twoxone, threexone, onextwo, twoxtwo, threextwo;
+    private ImageView lawnmower1,progressbarhead, progressbar2, lawnmower2, lawnmower3, suntoken,peashooter_card,sunflower_card, onexzero, twoxzero, threexzero, onexone, twoxone, threexone, onextwo, twoxtwo, threextwo;
     @FXML
     Button winbut;
     @FXML
@@ -274,6 +274,7 @@ public class Level2 extends Level implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        progressbar();
         zombiemove1();
         zombiemove2();
         zombiemove3();
@@ -303,6 +304,7 @@ public class Level2 extends Level implements Initializable {
         }
 
     }
+
     public void zombiemove2() {
 //
         zombies2 = null;
@@ -813,6 +815,14 @@ public class Level2 extends Level implements Initializable {
             }
         }
 
+    }
+    public void progressbar(){
+        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(70), progressbarhead);
+        translationElement.setCycleCount(1);
+        translationElement.setFromX(progressbarhead.getX() );
+        translationElement.setToX( progressbarhead.getX()-160);
+
+        translationElement.play();
     }
     @FXML
     public void mainmenu(ActionEvent event) throws IOException {
