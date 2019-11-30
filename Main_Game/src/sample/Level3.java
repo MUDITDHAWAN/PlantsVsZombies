@@ -409,6 +409,11 @@ public class Level3 extends Level implements Initializable {
         zombiemove4();
         zombiemove5();
         suntoken_move(suntoken);
+        checkCollisionLawnmower1(zombies1);
+        checkCollisionLawnmower2(zombies2);
+        checkCollisionLawnmower3(zombies3);
+        checkCollisionLawnmower4(zombies4);
+        checkCollisionLawnmower5(zombies5);
     }
 
     public void suntoken_move(ImageView  sun){

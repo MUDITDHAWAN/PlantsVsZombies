@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.animation.*;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -31,12 +32,22 @@ import java.util.*;
 public class Level1 extends Level implements Initializable {
     ArrayList<ImageView> zombies = null;
     ArrayList<Timeline> timelines = new ArrayList<>();
+    ArrayList<ImageView> lawnmover = null;
     @FXML
     private Label number_suns;
     @FXML
     private Stage stage;
     @FXML
     Parent login;
+    @FXML
+    private AnchorPane pane;
+    @FXML
+    Button menubut;
+    @FXML
+    private ImageView zombie1, suntoken, lawnmower1;
+    @FXML
+    private ImageView peashooter_card,progressbarhead, progressbar2,  peaOfPlacedPlant1, peaOfPlacedPlant2, peaOfPlacedPlant3, peaOfPlacedPlant4, peaOfPlacedPlant5, peaOfPlacedPlant6, peaOfPlacedPlant7, peaOfPlacedPlant8, peaOfPlacedPlant9, onexzero, twoxzero, threexzero, fourxzero, fivexzero, sixxzero, sevenxzero, eightxzero, ninexzero;
+
     public Level1 (){
         int number_of_Zombies= 3;
 
@@ -48,20 +59,24 @@ public class Level1 extends Level implements Initializable {
         for(int j=0 ; j<number_Tracks; j++){
             String new_id  = "lawnmower";
             array_Lawnmower.add(new LawnMower(new_id+String.valueOf(j+1)));
+
         }
 
         plants_Available.add( new ProjectileShooter("peashooter_card"));
 
 
     }
-    @FXML
-    private AnchorPane pane;
-    @FXML
-    Button menubut;
-    @FXML
-    private ImageView zombie1, suntoken;
-    @FXML
-    private ImageView peashooter_card,progressbarhead, progressbar2,  peaOfPlacedPlant1, peaOfPlacedPlant2, peaOfPlacedPlant3, peaOfPlacedPlant4, peaOfPlacedPlant5, peaOfPlacedPlant6, peaOfPlacedPlant7, peaOfPlacedPlant8, peaOfPlacedPlant9, onexzero, twoxzero, threexzero, fourxzero, fivexzero, sixxzero, sevenxzero, eightxzero, ninexzero;
+
+    Timer timer = new Timer();
+    TimerTask task = new TimerTask()
+    {
+        public void run()
+        {
+            //The task you want to do
+            zombiemove();
+        }
+
+    };
 
     private void createScene(Parent p,String fxmlfile,ActionEvent event) throws IOException {
         p =  FXMLLoader.load(getClass().getResource(fxmlfile));
@@ -186,15 +201,17 @@ public class Level1 extends Level implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         zombiemove();
         progressbar();
         suntoken_move(suntoken);
-
+        checkCollisionLawnmower(zombies);
 
 
 
 
     }
+
     public ArrayList<ImageView> makeZombie() throws FileNotFoundException {
         Random rand = new Random();
         int x = 600;
@@ -225,6 +242,7 @@ public class Level1 extends Level implements Initializable {
 
         translationElement.play();
     }
+
     public void zombiemove() {
 
 
@@ -310,42 +328,6 @@ public class Level1 extends Level implements Initializable {
         Image peaimg = new Image(inputstream);
        peaOfPlacedPlant = new ImageView(peaimg);
         pane.getChildren().add(peaOfPlacedPlant);
-//        if(number.substring(0,2).equals("on")){
-//            peaOfPlacedPlant = peaOfPlacedPlant1;
-//
-//        }
-//        else if(number.substring(0,2).equals("tw")){
-//            peaOfPlacedPlant = peaOfPlacedPlant2;
-//            amount =45;
-//        }
-//        else if(number.substring(0,2).equals("th")) {
-//            peaOfPlacedPlant = peaOfPlacedPlant3;
-//            amount = 90;
-//        }
-//        else if(number.substring(0,2).equals("fo")){
-//            peaOfPlacedPlant = peaOfPlacedPlant4;
-//            amount = 180;
-//        }
-//        else if(number.substring(0,2).equals("fi")){
-//            peaOfPlacedPlant = peaOfPlacedPlant5;
-//            amount = 225;
-//        }
-//        else if(number.substring(0,2).equals("si")){
-//            peaOfPlacedPlant = peaOfPlacedPlant6;
-//            amount = 270;
-//        }
-//        else if(number.substring(0,2).equals("se")){
-//            peaOfPlacedPlant = peaOfPlacedPlant7;
-//            amount = 315;
-//        }else if(number.substring(0,2).equals("ei")){
-//            peaOfPlacedPlant = peaOfPlacedPlant8;
-//            amount = 360;
-//        }
-//        else if(number.substring(0,2).equals("ni")){
-//            peaOfPlacedPlant = peaOfPlacedPlant9;
-//            amount = 380;
-//        }
-//
 
 
         peaOfPlacedPlant.setLayoutX(posX);
@@ -353,13 +335,6 @@ public class Level1 extends Level implements Initializable {
 
         peaOfPlacedPlant.setVisible(true);
         System.out.println("pea");
-//        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(10-(amount/100)*2), peaOfPlacedPlant);
-//        translationElement.setFromX(peaOfPlacedPlant.getX() );
-//        translationElement.setCycleCount(TranslateTransition.INDEFINITE);
-//        translationElement.setAutoReverse(false);
-//        translationElement.setToX( peaOfPlacedPlant.getX()+400- amount );
-//
-//        translationElement.play();
 
         Timeline timeline = new Timeline();
         timelines.add(timeline);
@@ -494,5 +469,79 @@ public class Level1 extends Level implements Initializable {
 
     }
 
+//    public void lawnmowermove() {
+//
+//
+//
+//        int t = 400;
+//
+//            Timeline timeline = new Timeline();
+//            timelines.add(timeline);
+//            KeyValue keyvalue = new KeyValue(lawnmower1.translateXProperty(),t);
+//            KeyFrame keyframe = new KeyFrame(Duration.seconds(10),keyvalue);
+//            timeline.getKeyFrames().add(keyframe);
+//            timeline.play();
+//
+//
+//
+//
+//
+//
+//
+//    }
+
+    public void checkCollisionLawnmower( ArrayList<ImageView> zombie){
+        // a lawnmower
+        // b zombie
+
+        Timeline timeline = new Timeline();
+        timelines.add(timeline);
+        timeline.setCycleCount(timeline.INDEFINITE);
+
+        KeyValue keyvalue = new KeyValue(lawnmower1.translateXProperty(), lawnmower1.getLayoutX(), new Interpolator() {
+
+
+
+            int flag=1;
+            @Override
+            protected double curve(double v) {
+
+                for (int j = 0; j < zombie.size(); j++){
+                    ImageView b = zombie.get(j);
+                    if (lawnmower1.getBoundsInParent().intersects(b.getBoundsInParent())) {
+
+                        for (int i = 0; i < arrayList_Zombie.size(); i++) {
+                            if ((b.getId()).equals(arrayList_Zombie.get(i).getFx_id())) {
+                                arrayList_Zombie.get(i).setHealth(0);
+                                flag =0;
+                                lawnmower1.setLayoutX(lawnmower1.getLayoutX()+0.5);
+                                System.out.println(arrayList_Zombie.get(i).getHealth());
+                                if (arrayList_Zombie.get(i).getHealth() == 0) {
+                                    b.setVisible(false);
+                                    b.setLayoutX(b.getLayoutX() - 10000);
+
+                                }
+                            }
+                        }
+                    }}
+                    if(flag==0){
+                        lawnmower1.setLayoutX(lawnmower1.getLayoutX()+5);
+                    }
+
+                    return 0;
+                }
+        });
+
+
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(5),keyvalue);
+        timeline.getKeyFrames().add(keyframe);
+        timeline.play();
+//        System.out.println("collision between "+ a.getId()+" " +b.getId()+ " "+ a.getBoundsInParent().intersects(b.getBoundsInParent()));
+//        System.out.println(a.getLayoutX());
+
+//        System.out.println(a.getBoundsInParent()+" layoutBound a x");
+//        System.out.println(b.getBoundsInParent());
+
+    }
 
 }

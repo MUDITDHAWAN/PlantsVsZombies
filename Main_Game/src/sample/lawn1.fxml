@@ -13,7 +13,7 @@
             <Image url="@pvz_images/backyard/level1lawngame.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="lawnmower" fitHeight="59.0" fitWidth="55.0" layoutX="95.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="lawnmower1" fitHeight="59.0" fitWidth="55.0" layoutX="95.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pvz_images/backyard/lawn_mower.gif" />
          </image>
