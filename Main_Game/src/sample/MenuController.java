@@ -29,7 +29,26 @@ public class MenuController {
     public void initialize(){
 
     }
+    @FXML
+    public void onMenu(ActionEvent event) throws IOException {
 
+//        Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+////        Stage popup = new Stage();
+////        Scene s = new Scene(root);
+////        popup.setScene(s);
+////        popup.show();
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
 }

@@ -10,12 +10,14 @@ import javafx.scene.AccessibleRole;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.lang.*;
@@ -54,7 +56,8 @@ public class Level1 extends Level implements Initializable {
     }
     @FXML
     private AnchorPane pane;
-
+    @FXML
+    Button menubut;
     @FXML
     private ImageView zombie1, suntoken;
     @FXML
@@ -407,16 +410,46 @@ public class Level1 extends Level implements Initializable {
         System.exit(0);
     }
 
-    @FXML
-    public void onMenu(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
-        Stage popup = new Stage();
-        Scene s = new Scene(root);
-        popup.setScene(s);
-        popup.show();
-
-    }
+//    public void onMenu(ActionEvent event) throws IOException {
+//
+////        Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+//////        Stage popup = new Stage();
+//////        Scene s = new Scene(root);
+//////        popup.setScene(s);
+//////        popup.show();
+////        menubut.setOnAction(EventHandler<ActionEvent>(){
+////            @Override
+////                    public void handle(){
+////
+////            }
+////        });
+//        menubut = new Button();
+//        menubut.setOnAction(new EventHandler<ActionEvent>() {
+//
+//            @Override
+//            public void handle(ActionEvent event) {
+//
+//                Label secondLabel = new Label("I'm a Label on new Window");
+//
+//                Pane secondaryLayout = new Pane();
+//                secondaryLayout.getChildren().add(secondLabel);
+//
+//                Scene secondScene = new Scene(secondaryLayout, 230, 100);
+//
+//                // New window (Stage)
+//                Stage newWindow = new Stage();
+//                newWindow.setTitle("Second Stage");
+//                newWindow.setScene(secondScene);
+//
+//                // Set position of second window, related to primary window.
+//
+//                newWindow.show();
+//            }
+//        });
+//
+//
+//    }
     @FXML
     public void onPause(ActionEvent event){
         for(int i = 0;i<timelines.size();i++){
