@@ -200,14 +200,14 @@ public class Level1 extends Level implements Initializable {
             FileInputStream inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\zombie_gifs\\zombie_normal.gif");
             Image zombieimg = new Image(inputstream);
             ImageView zombie = new ImageView(zombieimg);
-            zombie.setId(String.valueOf(i));
+            zombie.setId("zombie"+String.valueOf(i));
             zombies.add(zombie);
             pane.getChildren().add(zombie);
             zombie.setLayoutX(x);
             zombie.setLayoutY(100);
             zombie.setFitWidth(50);
             zombie.setFitHeight(100);
-            arrayList_Zombie.add(new Zombie(String.valueOf(i)));
+            arrayList_Zombie.add(new Zombie("zombie"+String.valueOf(i)));
             x += 100;
         }
         return zombies;
