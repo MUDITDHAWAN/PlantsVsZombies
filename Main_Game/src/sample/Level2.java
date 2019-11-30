@@ -122,7 +122,7 @@ public class Level2 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(onexzero);
+            sunGenerate(twoxzero);
             addSun_tokens(-50);
         }
     }
@@ -136,7 +136,7 @@ public class Level2 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(onexzero);
+            sunGenerate(threexzero);
             addSun_tokens(-50);
         }
     }
@@ -151,7 +151,7 @@ public class Level2 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(onexzero);
+            sunGenerate(onexone);
             addSun_tokens(-50);
         }
     }
@@ -165,7 +165,7 @@ public class Level2 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(onexzero);
+            sunGenerate(twoxone);
             addSun_tokens(-50);
         }
     }
@@ -179,7 +179,7 @@ public class Level2 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(onexzero);
+            sunGenerate(threexone);
             addSun_tokens(-50);
         }
     }
@@ -207,7 +207,7 @@ public class Level2 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(onexzero);addSun_tokens(-50);
+            sunGenerate(twoxtwo);addSun_tokens(-50);
         }
     }
     @FXML
@@ -221,7 +221,7 @@ public class Level2 extends Level implements Initializable {
             addSun_tokens(-100);
         }
         if (type.equalsIgnoreCase("sun")){
-            sunGenerate(onexzero);
+            sunGenerate(threextwo);
             addSun_tokens(-50);
         }
 
@@ -317,7 +317,7 @@ public class Level2 extends Level implements Initializable {
 
         KeyValue keyvalue = new KeyValue(sunOfPlacedPlant.translateYProperty(), sunOfPlacedPlant.getLayoutY(), new Interpolator() {
 
-            double rest = 50;
+            double rest = 300;
             int intermediate=0;
             @Override
 

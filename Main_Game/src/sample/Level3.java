@@ -418,7 +418,7 @@ public class Level3 extends Level implements Initializable {
 
         KeyValue keyvalue = new KeyValue(sunOfPlacedPlant.translateYProperty(), sunOfPlacedPlant.getLayoutY(), new Interpolator() {
 
-            double rest = 50;
+            double rest = 300;
             int intermediate=0;
             @Override
 
