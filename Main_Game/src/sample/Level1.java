@@ -28,6 +28,7 @@ import java.util.*;
 
 public class Level1 extends Level implements Initializable {
     ArrayList<ImageView> zombies = null;
+    ArrayList<Timeline> timelines = new ArrayList<>();
     @FXML
     private Label number_suns;
     @FXML
@@ -245,6 +246,7 @@ public class Level1 extends Level implements Initializable {
         int t = -500;
         for(int i = 0;i<zombies.size();i++){
             Timeline timeline = new Timeline();
+            timelines.add(timeline);
             KeyValue keyvalue = new KeyValue(zombies.get(i).translateXProperty(),t);
             KeyFrame keyframe = new KeyFrame(Duration.seconds(50),keyvalue);
             timeline.getKeyFrames().add(keyframe);
@@ -266,6 +268,7 @@ public class Level1 extends Level implements Initializable {
 //        translationElement.play();
 
         Timeline timeline = new Timeline();
+        timelines.add(timeline);
         timeline.setCycleCount(timeline.INDEFINITE);
 
         KeyValue keyvalue = new KeyValue(sun.translateYProperty(), sun.getLayoutY(), new Interpolator() {
@@ -356,6 +359,7 @@ public class Level1 extends Level implements Initializable {
 //        translationElement.play();
 
         Timeline timeline = new Timeline();
+        timelines.add(timeline);
         timeline.setCycleCount(timeline.INDEFINITE);
         ImageView finalPeaOfPlacedPlant = peaOfPlacedPlant;
         KeyValue keyvalue = new KeyValue(peaOfPlacedPlant.translateXProperty(), 400, new Interpolator() {
@@ -403,7 +407,35 @@ public class Level1 extends Level implements Initializable {
         System.exit(0);
     }
 
+    @FXML
+    public void onMenu(ActionEvent event) throws IOException {
 
+        Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+        Stage popup = new Stage();
+        Scene s = new Scene(root);
+        popup.setScene(s);
+        popup.show();
+
+    }
+    @FXML
+    public void onPause(ActionEvent event){
+        for(int i = 0;i<timelines.size();i++){
+            timelines.get(i).pause();
+        }
+
+    }
+    @FXML
+    public void onPlay(){
+        for(int i = 0;i<timelines.size();i++){
+            timelines.get(i).play();
+        }
+    }
+    @FXML
+    public void onSaveGame(ActionEvent event) throws IOException {
+
+
+
+    }
 
     public void checkCollision(ImageView a,ImageView b){
 //        System.out.println("collision between "+ a.getId()+" " +b.getId()+ " "+ a.getBoundsInParent().intersects(b.getBoundsInParent()));
@@ -429,10 +461,5 @@ public class Level1 extends Level implements Initializable {
 
     }
 
-    @FXML
-    public void onSaveGame(ActionEvent event) throws IOException {
 
-        createScene(login,"loginpage.fxml",event);
-
-    }
 }

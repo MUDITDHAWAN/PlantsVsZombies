@@ -92,8 +92,6 @@
             <Image url="@pvz_images/pea/Pea.png" />
          </image>
       </ImageView>
-      <Button layoutX="414.0" layoutY="296.0" mnemonicParsing="false" onAction="#onSaveGame" text="Save Game" />
-      <Button layoutX="519.0" layoutY="296.0" mnemonicParsing="false" onAction="#quitButtonPressed" text="Quit" />
       <ImageView fx:id="progressbarhead" fitHeight="38.0" fitWidth="39.0" layoutX="519.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pvz_images/backyard/prgressbar_head.png" />
@@ -110,5 +108,8 @@
             <Image url="@pvz_images/backyard/sun.gif" />
          </image>
       </ImageView>
+      <Button layoutX="434.0" layoutY="295.0" mnemonicParsing="false" onAction="#onMenu" text="Menu" />
+      <Button layoutX="358.0" layoutY="295.0" mnemonicParsing="false" onAction="#onPause" text="Pause" />
+      <Button layoutX="506.0" layoutY="295.0" mnemonicParsing="false" onAction="#onPlay" text="play" />
    </children>
 </AnchorPane>
