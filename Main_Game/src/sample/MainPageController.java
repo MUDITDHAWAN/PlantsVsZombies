@@ -39,7 +39,7 @@ public class MainPageController {
     }
     @FXML
     public void startGameButtonPressed(ActionEvent event) throws IOException {
-        createScene(lawnScreen,"lawnLevel3.fxml",event);
+        createScene(lawnScreen,"lawn1.fxml",event);
     }
     @FXML
     public void chooseLevelButtonPressed(ActionEvent event) throws IOException {

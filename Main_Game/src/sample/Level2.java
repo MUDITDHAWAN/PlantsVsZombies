@@ -268,9 +268,8 @@ public class Level2 extends Level implements Initializable {
 
 
     public void checkCollision(ImageView a,ImageView b){
-        System.out.println(a.getLayoutBounds().intersects(b.getLayoutBounds()));
-        System.out.println(a.getLayoutBounds()+" layoutBound a x");
-        System.out.println(b.getLayoutBounds());
+        System.out.println(a.getBoundsInParent().intersects(b.getBoundsInParent()));
+
 
     }
 }

@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.AccessibleRole;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,13 +24,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class Level1 extends Level implements Initializable {
-
+    ArrayList<ImageView> zombies = null;
     @FXML
     private Label number_suns;
     @FXML
@@ -39,10 +37,7 @@ public class Level1 extends Level implements Initializable {
     public Level1 (){
         int number_of_Zombies= 3;
 
-        for(int i=0; i< number_of_Zombies; i++){
-            String new_id  = "zombie";
-            arrayList_Zombie.add( new Zombie(new_id + String.valueOf(i+1)));
-        }
+
         number_Tracks= 1;
 
         level_Number =1;
@@ -196,6 +191,28 @@ public class Level1 extends Level implements Initializable {
 
 
     }
+    public ArrayList<ImageView> makeZombie() throws FileNotFoundException {
+        Random rand = new Random();
+        int x = 600;
+        int num = rand.nextInt(5)+1;
+        ArrayList<ImageView> zombies = new ArrayList<>();
+        for (int i = 0;i<num;i++){
+            FileInputStream inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\zombie_gifs\\zombie_normal.gif");
+            Image zombieimg = new Image(inputstream);
+            ImageView zombie = new ImageView(zombieimg);
+            zombie.setId(String.valueOf(i));
+            zombies.add(zombie);
+            pane.getChildren().add(zombie);
+            zombie.setLayoutX(x);
+            zombie.setLayoutY(100);
+            zombie.setFitWidth(50);
+            zombie.setFitHeight(100);
+            arrayList_Zombie.add(new Zombie(String.valueOf(i)));
+            x += 100;
+        }
+        return zombies;
+
+    }
     public void progressbar(){
         TranslateTransition translationElement = new TranslateTransition(Duration.seconds(30), progressbarhead);
         translationElement.setCycleCount(1);
@@ -205,24 +222,36 @@ public class Level1 extends Level implements Initializable {
         translationElement.play();
     }
     public void zombiemove() {
-        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(30), zombie1);
-        translationElement.setFromX(zombie1.getX() );
-        translationElement.setToX( zombie1.getX()-400 );
-        translationElement.setCycleCount(1);
-        translationElement.play();
-        // to make the the image invisible
-        translationElement.setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                zombie1.setVisible(false);
-            }
-        });
 
-//         Timeline timeline = new Timeline();
-//        KeyValue keyvalue = new KeyValue(zombie1.translateXProperty(),-400);
-//        KeyFrame keyframe = new KeyFrame(Duration.seconds(30),keyvalue);
-//        timeline.getKeyFrames().add(keyframe);
-//        timeline.play();
+
+//        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(30), zombie1);
+//        translationElement.setFromX(zombie1.getX() );
+//        translationElement.setToX( zombie1.getX()-400 );
+//        translationElement.setCycleCount(1);
+//        translationElement.play();
+//        // to make the the image invisible
+//        translationElement.setOnFinished(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                zombie1.setVisible(false);
+//            }
+//        });
+
+        try {
+            zombies = makeZombie();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        int t = -500;
+        for(int i = 0;i<zombies.size();i++){
+            Timeline timeline = new Timeline();
+            KeyValue keyvalue = new KeyValue(zombies.get(i).translateXProperty(),t);
+            KeyFrame keyframe = new KeyFrame(Duration.seconds(50),keyvalue);
+            timeline.getKeyFrames().add(keyframe);
+            timeline.play();
+            t -= 100;
+        }
+
 
 
 
@@ -270,42 +299,47 @@ public class Level1 extends Level implements Initializable {
         String number = placeHolderPlant.getId();
         double amount = 0;
         ImageView peaOfPlacedPlant = null;
-        if(number.substring(0,2).equals("on")){
-            peaOfPlacedPlant = peaOfPlacedPlant1;
 
-        }
-        else if(number.substring(0,2).equals("tw")){
-            peaOfPlacedPlant = peaOfPlacedPlant2;
-            amount =45;
-        }
-        else if(number.substring(0,2).equals("th")) {
-            peaOfPlacedPlant = peaOfPlacedPlant3;
-            amount = 90;
-        }
-        else if(number.substring(0,2).equals("fo")){
-            peaOfPlacedPlant = peaOfPlacedPlant4;
-            amount = 180;
-        }
-        else if(number.substring(0,2).equals("fi")){
-            peaOfPlacedPlant = peaOfPlacedPlant5;
-            amount = 225;
-        }
-        else if(number.substring(0,2).equals("si")){
-            peaOfPlacedPlant = peaOfPlacedPlant6;
-            amount = 270;
-        }
-        else if(number.substring(0,2).equals("se")){
-            peaOfPlacedPlant = peaOfPlacedPlant7;
-            amount = 315;
-        }else if(number.substring(0,2).equals("ei")){
-            peaOfPlacedPlant = peaOfPlacedPlant8;
-            amount = 360;
-        }
-        else if(number.substring(0,2).equals("ni")){
-            peaOfPlacedPlant = peaOfPlacedPlant9;
-            amount = 380;
-        }
-
+        FileInputStream inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\pea\\Pea.png");
+        Image peaimg = new Image(inputstream);
+       peaOfPlacedPlant = new ImageView(peaimg);
+        pane.getChildren().add(peaOfPlacedPlant);
+//        if(number.substring(0,2).equals("on")){
+//            peaOfPlacedPlant = peaOfPlacedPlant1;
+//
+//        }
+//        else if(number.substring(0,2).equals("tw")){
+//            peaOfPlacedPlant = peaOfPlacedPlant2;
+//            amount =45;
+//        }
+//        else if(number.substring(0,2).equals("th")) {
+//            peaOfPlacedPlant = peaOfPlacedPlant3;
+//            amount = 90;
+//        }
+//        else if(number.substring(0,2).equals("fo")){
+//            peaOfPlacedPlant = peaOfPlacedPlant4;
+//            amount = 180;
+//        }
+//        else if(number.substring(0,2).equals("fi")){
+//            peaOfPlacedPlant = peaOfPlacedPlant5;
+//            amount = 225;
+//        }
+//        else if(number.substring(0,2).equals("si")){
+//            peaOfPlacedPlant = peaOfPlacedPlant6;
+//            amount = 270;
+//        }
+//        else if(number.substring(0,2).equals("se")){
+//            peaOfPlacedPlant = peaOfPlacedPlant7;
+//            amount = 315;
+//        }else if(number.substring(0,2).equals("ei")){
+//            peaOfPlacedPlant = peaOfPlacedPlant8;
+//            amount = 360;
+//        }
+//        else if(number.substring(0,2).equals("ni")){
+//            peaOfPlacedPlant = peaOfPlacedPlant9;
+//            amount = 380;
+//        }
+//
 
 
         peaOfPlacedPlant.setLayoutX(posX);
@@ -327,31 +361,38 @@ public class Level1 extends Level implements Initializable {
         KeyValue keyvalue = new KeyValue(peaOfPlacedPlant.translateXProperty(), 400, new Interpolator() {
 
             double posx = finalPeaOfPlacedPlant.getLayoutX();
+            double posy = finalPeaOfPlacedPlant.getLayoutY();
             @Override
             protected double curve(double v) {
 //                for(int i=0; i<plants_Used.size(); i++){
 //                    System.out.println(plants_Used.get(i));
 //                }
-                if(placeHolderPlant.getBoundsInParent().intersects(zombie1.getBoundsInParent())){
+                for(int i = 0;i<zombies.size();i++){
+                    if(placeHolderPlant.getBoundsInParent().intersects(zombies.get(i).getBoundsInParent())){
 
 //                    System.out.println("collision between "+placeHolderPlant.getId()+" "+zombie1.getId());
 
-                    placeHolderPlant.setVisible(false);
-                    finalPeaOfPlacedPlant.setVisible(false);
+                        placeHolderPlant.setVisible(false);
+                        finalPeaOfPlacedPlant.setVisible(false);
+
+                        finalPeaOfPlacedPlant.setLayoutX(-200000);
+                    }
+                    if (finalPeaOfPlacedPlant.getLayoutX()<600){
+                        finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+0.5);
+                    }
+                    else{
+                        finalPeaOfPlacedPlant.setLayoutX(posx);
+                        finalPeaOfPlacedPlant.setLayoutY(posy);
+                        finalPeaOfPlacedPlant.setVisible(true);
+                    }
+                    if(zombies.get(i)!=null)
+                        checkCollision(finalPeaOfPlacedPlant,zombies.get(i));
                 }
-                if (finalPeaOfPlacedPlant.getLayoutX()<600){
-                    finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+2);
-                }
-                else{
-                    finalPeaOfPlacedPlant.setLayoutX(posx);
-                    finalPeaOfPlacedPlant.setVisible(true);
-                }
-                if(zombie1!=null)
-                    checkCollision(finalPeaOfPlacedPlant,zombie1);
+
                 return 0;
             }
         });
-        KeyFrame keyframe = new KeyFrame(Duration.seconds(5),keyvalue);
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(10),keyvalue);
         timeline.getKeyFrames().add(keyframe);
         timeline.play();
 
@@ -370,7 +411,7 @@ public class Level1 extends Level implements Initializable {
         if (a.getBoundsInParent().intersects(b.getBoundsInParent())){
             a.setVisible(false);
 
-            a.setLayoutX(a.getLayoutX()+100);
+            a.setLayoutY(a.getLayoutY()+3000);
             for(int i =0; i<arrayList_Zombie.size(); i++){
                 if((b.getId()).equals(arrayList_Zombie.get(i).getFx_id())){
                     arrayList_Zombie.get(i).decrementHealth(20);

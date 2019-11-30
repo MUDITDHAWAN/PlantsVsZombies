@@ -34,7 +34,7 @@
          </image>
       </ImageView>
       <ImageView fx:id="ninexzero" fitHeight="59.0" fitWidth="62.0" layoutX="528.0" layoutY="159.0" onDragDropped="#handleDragDrop9" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView id="zombie1" fx:id="zombie1" fitHeight="88.0" fitWidth="69.0" layoutX="528.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="zombie1" fx:id="zombie1" fitHeight="88.0" fitWidth="69.0" layoutX="518.0" layoutY="-110.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pvz_images/zombie_gifs/zombie_normal.gif" />
          </image>
