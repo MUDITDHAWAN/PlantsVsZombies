@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -81,5 +82,11 @@
             <Image url="@pvz_images/backyard/lawn_mower.gif" />
          </image>
       </ImageView>
+      <ImageView fx:id="suntoken" fitHeight="47.0" fitWidth="47.0" layoutX="372.0" layoutY="29.0" onMouseClicked="#getSuntoken" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pvz_images/backyard/sun.gif" />
+         </image>
+      </ImageView>
+      <Label fx:id="number_suns" layoutX="27.0" layoutY="66.0" prefHeight="17.0" prefWidth="28.0" text="0" />
    </children>
 </AnchorPane>

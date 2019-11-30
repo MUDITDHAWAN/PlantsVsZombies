@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -48,32 +49,44 @@ public class Level2 extends Level implements Initializable {
     }
 
     @FXML
-    private ImageView peashooter_card,sunflower_card, onexzero, twoxzero, threexzero, onexone, twoxone, threexone, onextwo, twoxtwo, threextwo;
+    private Label number_suns;
+    @FXML
+    private ImageView suntoken,peashooter_card,sunflower_card, onexzero, twoxzero, threexzero, onexone, twoxone, threexone, onextwo, twoxtwo, threextwo;
 
     @FXML
     AnchorPane anchor;
     @FXML
+    public void getSuntoken( MouseEvent event) {
+        suntoken.setVisible(false);
+        addSun_tokens(25);
+        number_suns.setText(String.valueOf(getSun_tokens()));
+
+    }
+
+    @FXML
     public void handleDragDetectedPeashooter(MouseEvent event) throws FileNotFoundException{
-        Dragboard db = peashooter_card.startDragAndDrop((TransferMode.ANY));
-        ClipboardContent cb = new ClipboardContent();
-        FileInputStream inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\plant_gifs\\peashooter.gif");
-        Image peashooter_img = new Image(inputstream);
-        cb.putImage(peashooter_img);
-        cb.putString("pea");
-        db.setContent(cb);
-        event.consume();
+        if(getSun_tokens()>=100)
+        {Dragboard db = peashooter_card.startDragAndDrop((TransferMode.ANY));
+            ClipboardContent cb = new ClipboardContent();
+            FileInputStream inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\plant_gifs\\peashooter.gif");
+            Image peashooter_img = new Image(inputstream);
+            cb.putImage(peashooter_img);
+            cb.putString("pea");
+            db.setContent(cb);
+            event.consume();}
     }
 
     @FXML
     public void handleDragDetectedSunflower(MouseEvent event) throws FileNotFoundException{
-        Dragboard db = sunflower_card.startDragAndDrop((TransferMode.ANY));
+        if(getSun_tokens()>=50)
+        {Dragboard db = sunflower_card.startDragAndDrop((TransferMode.ANY));
         ClipboardContent cb = new ClipboardContent();
         FileInputStream inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\plant_gifs\\sunflower.gif");
         Image peashooter_img = new Image(inputstream);
         cb.putImage(peashooter_img);
         cb.putString("sun");
         db.setContent(cb);
-        event.consume();
+        event.consume();}
     }
     // for lawn
     @FXML
@@ -89,10 +102,15 @@ public class Level2 extends Level implements Initializable {
         String type = event.getDragboard().getString();
 //        System.out.println(s);
         onexzero.setImage(peashooter_img);
-
         if (type.equalsIgnoreCase("pea")){
             plantAttack(onexzero);
+            addSun_tokens(-100);
         }
+        if (type.equalsIgnoreCase("sun")){
+            sunGenerate(onexzero);
+            addSun_tokens(-50);
+        }
+
     }
     @FXML
     public void handleDragDrop20(DragEvent event) throws FileNotFoundException{
@@ -101,6 +119,11 @@ public class Level2 extends Level implements Initializable {
         String type = event.getDragboard().getString();
         if (type.equalsIgnoreCase("pea")){
             plantAttack(twoxzero);
+            addSun_tokens(-100);
+        }
+        if (type.equalsIgnoreCase("sun")){
+            sunGenerate(onexzero);
+            addSun_tokens(-50);
         }
     }
     @FXML
@@ -110,6 +133,11 @@ public class Level2 extends Level implements Initializable {
         String type = event.getDragboard().getString();
         if (type.equalsIgnoreCase("pea")){
             plantAttack(threexzero);
+            addSun_tokens(-100);
+        }
+        if (type.equalsIgnoreCase("sun")){
+            sunGenerate(onexzero);
+            addSun_tokens(-50);
         }
     }
 
@@ -120,6 +148,11 @@ public class Level2 extends Level implements Initializable {
         String type = event.getDragboard().getString();
         if (type.equalsIgnoreCase("pea")){
             plantAttack(onexone);
+            addSun_tokens(-100);
+        }
+        if (type.equalsIgnoreCase("sun")){
+            sunGenerate(onexzero);
+            addSun_tokens(-50);
         }
     }
     @FXML
@@ -129,6 +162,11 @@ public class Level2 extends Level implements Initializable {
         String type = event.getDragboard().getString();
         if (type.equalsIgnoreCase("pea")){
             plantAttack(twoxone);
+            addSun_tokens(-100);
+        }
+        if (type.equalsIgnoreCase("sun")){
+            sunGenerate(onexzero);
+            addSun_tokens(-50);
         }
     }
     @FXML
@@ -138,6 +176,11 @@ public class Level2 extends Level implements Initializable {
         String type = event.getDragboard().getString();
         if (type.equalsIgnoreCase("pea")){
             plantAttack(threexone);
+            addSun_tokens(-100);
+        }
+        if (type.equalsIgnoreCase("sun")){
+            sunGenerate(onexzero);
+            addSun_tokens(-50);
         }
     }
 
@@ -148,6 +191,10 @@ public class Level2 extends Level implements Initializable {
         String type = event.getDragboard().getString();
         if (type.equalsIgnoreCase("pea")){
             plantAttack(onextwo);
+            addSun_tokens(-100);
+        }
+        if (type.equalsIgnoreCase("sun")){
+            sunGenerate(onexzero);addSun_tokens(-50);
         }
     }
     @FXML
@@ -157,6 +204,10 @@ public class Level2 extends Level implements Initializable {
         String type = event.getDragboard().getString();
         if (type.equalsIgnoreCase("pea")){
             plantAttack(twoxtwo);
+            addSun_tokens(-100);
+        }
+        if (type.equalsIgnoreCase("sun")){
+            sunGenerate(onexzero);addSun_tokens(-50);
         }
     }
     @FXML
@@ -166,6 +217,12 @@ public class Level2 extends Level implements Initializable {
         String type = event.getDragboard().getString();
         if (type.equalsIgnoreCase("pea")){
             plantAttack(threextwo);
+            System.out.println("plantAtt");
+            addSun_tokens(-100);
+        }
+        if (type.equalsIgnoreCase("sun")){
+            sunGenerate(onexzero);
+            addSun_tokens(-50);
         }
 
     }
@@ -175,6 +232,7 @@ public class Level2 extends Level implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         zombiemove();
+        suntoken_move(suntoken);
     }
 
     public void zombiemove() {
@@ -196,6 +254,97 @@ public class Level2 extends Level implements Initializable {
 //        KeyFrame keyframe = new KeyFrame(Duration.seconds(30),keyvalue);
 //        timeline.getKeyFrames().add(keyframe);
 //        timeline.play();
+
+    }
+
+    public void suntoken_move(ImageView  sun){
+//        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(10), sun);
+//        sun.setVisible(true);
+//        translationElement.setFromY(sun.getLayoutY());
+//        translationElement.setToY( sun.getLayoutY()+400 );
+//        translationElement.setCycleCount(translationElement.INDEFINITE);
+//        translationElement.play();
+
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(timeline.INDEFINITE);
+
+        KeyValue keyvalue = new KeyValue(sun.translateYProperty(), sun.getLayoutY(), new Interpolator() {
+            double rest = sun.getLayoutY();
+            @Override
+
+            protected double curve(double v) {
+                if(sun.getLayoutY()<500){
+                    sun.setLayoutY(sun.getLayoutY()+1);
+                }
+                else{
+                    sun.setVisible(true);
+                    sun.setLayoutY(rest);
+                    sun.setLayoutX(sun.getLayoutX()+10);
+                }
+
+                return 0;
+            }
+        });
+
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(5),keyvalue);
+        timeline.getKeyFrames().add(keyframe);
+        timeline.play();
+
+    }
+
+    public void sunGenerate(ImageView placeHolderPlant) throws FileNotFoundException {
+        double posX= placeHolderPlant.getLayoutX()+placeHolderPlant.getFitWidth();
+        double posY = placeHolderPlant.getLayoutY();
+
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(timeline.INDEFINITE);
+        FileInputStream inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\backyard\\sun.gif");
+        Image sunimg = new Image(inputstream);
+        ImageView sunOfPlacedPlant = new ImageView(sunimg);
+        sunOfPlacedPlant.setImage(null);
+        sunOfPlacedPlant.setOnMouseClicked(new EventHandler<MouseEvent>(){
+
+            @Override
+            public void handle(MouseEvent event) {
+                sunOfPlacedPlant.setVisible(false);
+                System.out.println("click");
+                addSun_tokens(25);
+                number_suns.setText(String.valueOf(getSun_tokens()));
+                anchor.getChildren().remove(sunOfPlacedPlant);
+                sunOfPlacedPlant.setImage(null);
+            }
+        });
+
+        KeyValue keyvalue = new KeyValue(sunOfPlacedPlant.translateYProperty(), sunOfPlacedPlant.getLayoutY(), new Interpolator() {
+
+            double rest = 50;
+            int intermediate=0;
+            @Override
+
+            protected double curve(double v) {
+                if(sunOfPlacedPlant.getImage()== null)
+               { if(intermediate<rest){
+                    intermediate= intermediate+1;
+                }
+                else{
+                    sunOfPlacedPlant.setImage(sunimg);
+                    anchor.getChildren().add(sunOfPlacedPlant);
+                    sunOfPlacedPlant.setLayoutX(posX);
+                    sunOfPlacedPlant.setLayoutY(posY);
+                    System.out.println(sunOfPlacedPlant.getLayoutX());
+
+                    sunOfPlacedPlant.setVisible(true);
+                    intermediate=0;
+
+                }}
+
+                return 0;
+            }
+        });
+
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(5),keyvalue);
+        timeline.getKeyFrames().add(keyframe);
+        timeline.play();
 
     }
     public void plantAttack(ImageView placeHolderPlant) throws FileNotFoundException{
@@ -263,13 +412,14 @@ public class Level2 extends Level implements Initializable {
 
         translationElement.play();
 //
-//
+
     }
 
 
     public void checkCollision(ImageView a,ImageView b){
-        System.out.println(a.getBoundsInParent().intersects(b.getBoundsInParent()));
-
+        System.out.println(a.getLayoutBounds().intersects(b.getLayoutBounds()));
+        System.out.println(a.getLayoutBounds()+" layoutBound a x");
+        System.out.println(b.getLayoutBounds());
 
     }
 }
