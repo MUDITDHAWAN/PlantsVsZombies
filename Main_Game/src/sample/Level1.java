@@ -73,13 +73,14 @@ public class Level1 extends Level implements Initializable {
     }
     @FXML
     public void handleDragDetected(MouseEvent event) throws FileNotFoundException{
-        Dragboard db = peashooter_card.startDragAndDrop((TransferMode.ANY));
+        if(getSun_tokens()>=50)
+        {Dragboard db = peashooter_card.startDragAndDrop((TransferMode.ANY));
         ClipboardContent cb = new ClipboardContent();
         FileInputStream inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\plant_gifs\\peashooter.gif");
         Image peashooter_img = new Image(inputstream);
         cb.putImage(peashooter_img);
         db.setContent(cb);
-        event.consume();
+        event.consume();}
     }
     public void handlePlantCollision(ImageView plant){
         if(plant.getBoundsInParent().intersects(zombie1.getBoundsInParent())){
@@ -102,6 +103,7 @@ public class Level1 extends Level implements Initializable {
         handlePlantCollision(onexzero);
         plantAttack(onexzero);
         setPlants_Used(new ProjectileShooter(onexzero.getId()));
+        addSun_tokens(-100);
     }
     @FXML
     public void handleDragDrop2(DragEvent event) throws FileNotFoundException{
@@ -110,6 +112,7 @@ public class Level1 extends Level implements Initializable {
         handlePlantCollision(twoxzero);
         plantAttack(twoxzero);
         setPlants_Used(new ProjectileShooter(onexzero.getId()));
+        addSun_tokens(-100);
     }
     @FXML
     public void handleDragDrop3(DragEvent event) throws FileNotFoundException{
@@ -118,6 +121,7 @@ public class Level1 extends Level implements Initializable {
         handlePlantCollision(threexzero);
         plantAttack(threexzero);
         setPlants_Used(new ProjectileShooter(onexzero.getId()));
+        addSun_tokens(-100);
     }
     @FXML
     public void handleDragDrop4(DragEvent event) throws FileNotFoundException{
@@ -126,6 +130,7 @@ public class Level1 extends Level implements Initializable {
         handlePlantCollision(fourxzero);
         plantAttack(fourxzero);
         setPlants_Used(new ProjectileShooter(onexzero.getId()));
+        addSun_tokens(-100);
     }
     @FXML
     public void handleDragDrop5(DragEvent event) throws FileNotFoundException{
@@ -134,6 +139,7 @@ public class Level1 extends Level implements Initializable {
         handlePlantCollision(fivexzero);
         plantAttack(fivexzero);
         setPlants_Used(new ProjectileShooter(onexzero.getId()));
+        addSun_tokens(-100);
     }
     @FXML
     public void handleDragDrop6(DragEvent event) throws FileNotFoundException{
@@ -142,6 +148,7 @@ public class Level1 extends Level implements Initializable {
         handlePlantCollision(sixxzero);
         plantAttack(sixxzero);
         setPlants_Used(new ProjectileShooter(onexzero.getId()));
+        addSun_tokens(-100);
     }
     @FXML
     public void handleDragDrop7(DragEvent event) throws FileNotFoundException{
@@ -150,6 +157,7 @@ public class Level1 extends Level implements Initializable {
         handlePlantCollision(sevenxzero);
         plantAttack(sevenxzero);
         setPlants_Used(new ProjectileShooter(onexzero.getId()));
+        addSun_tokens(-100);
     }@FXML
     public void handleDragDrop8(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
@@ -157,6 +165,7 @@ public class Level1 extends Level implements Initializable {
         handlePlantCollision(eightxzero);
         plantAttack(eightxzero);
         setPlants_Used(new ProjectileShooter(onexzero.getId()));
+        addSun_tokens(-100);
     }@FXML
     public void handleDragDrop9(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
@@ -164,6 +173,7 @@ public class Level1 extends Level implements Initializable {
         handlePlantCollision(ninexzero);
         plantAttack(ninexzero);
         setPlants_Used(new ProjectileShooter(onexzero.getId()));
+        addSun_tokens(-100);
     }
 
     @FXML
@@ -377,6 +387,7 @@ public class Level1 extends Level implements Initializable {
 //        System.out.println(b.getBoundsInParent());
 
     }
+
     @FXML
     public void onSaveGame(ActionEvent event) throws IOException {
 

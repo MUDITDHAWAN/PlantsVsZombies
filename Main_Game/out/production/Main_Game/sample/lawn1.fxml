@@ -99,7 +99,7 @@
             <Image url="@pvz_images/backyard/prgressbar_head.png" />
          </image>
       </ImageView>
-      <Label fx:id="number_suns" layoutX="32.0" layoutY="54.0" prefHeight="17.0" prefWidth="18.0" text="0" />
+      <Label fx:id="number_suns" layoutX="21.0" layoutY="54.0" prefHeight="17.0" prefWidth="39.0" text="0" />
       <ImageView fitHeight="25.0" fitWidth="200.0" layoutX="357.0" layoutY="14.0" opacity="0.39" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pvz_images/backyard/progressbar1.png" />
