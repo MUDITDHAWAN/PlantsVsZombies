@@ -104,7 +104,7 @@ public class Level3 extends Level implements Initializable {
     @FXML
     private Label number_suns;
     @FXML
-    private ImageView suntoken, peashooter_card,sunflower_card,walnut_card, cherrybomb_card, onexzero, twoxzero, threexzero, onexone, twoxone, threexone, onextwo, twoxtwo, threextwo, onexthree, twoxthree, threexthree, onexfour, twoxfour, threexfour ;
+    private ImageView lawnmower1, lawnmower2, lawnmower3, lawnmower4, lawnmower5, suntoken, peashooter_card,sunflower_card,walnut_card, cherrybomb_card, onexzero, twoxzero, threexzero, onexone, twoxone, threexone, onextwo, twoxtwo, threextwo, onexthree, twoxthree, threexthree, onexfour, twoxfour, threexfour ;
 
     @FXML
     public void getSuntoken( MouseEvent event) {
@@ -788,6 +788,277 @@ public class Level3 extends Level implements Initializable {
 
 
     }
+
+    public void checkCollisionLawnmower1( ArrayList<ImageView> zombie){
+        // a lawnmower
+        // b zombie
+
+        Timeline timeline = new Timeline();
+        timelines.add(timeline);
+        timeline.setCycleCount(timeline.INDEFINITE);
+
+        KeyValue keyvalue = new KeyValue(lawnmower1.translateXProperty(), lawnmower1.getLayoutX(), new Interpolator() {
+
+
+
+            int flag=1;
+            @Override
+            protected double curve(double v) {
+
+                for (int j = 0; j < zombie.size(); j++){
+                    ImageView b = zombie.get(j);
+                    if (lawnmower1.getBoundsInParent().intersects(b.getBoundsInParent())) {
+
+                        for (int i = 0; i < arrayList_Zombie.size(); i++) {
+                            if ((b.getId()).equals(arrayList_Zombie.get(i).getFx_id())) {
+                                arrayList_Zombie.get(i).setHealth(0);
+                                flag =0;
+                                lawnmower1.setLayoutX(lawnmower1.getLayoutX()+0.5);
+                                System.out.println(arrayList_Zombie.get(i).getHealth());
+                                if (arrayList_Zombie.get(i).getHealth() == 0) {
+                                    b.setVisible(false);
+                                    b.setLayoutX(b.getLayoutX() - 10000);
+
+                                }
+                            }
+                        }
+                    }}
+                if(flag==0){
+                    lawnmower1.setLayoutX(lawnmower1.getLayoutX()+5);
+                }
+
+                return 0;
+            }
+        });
+
+
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(5),keyvalue);
+        timeline.getKeyFrames().add(keyframe);
+        timeline.play();
+//        System.out.println("collision between "+ a.getId()+" " +b.getId()+ " "+ a.getBoundsInParent().intersects(b.getBoundsInParent()));
+//        System.out.println(a.getLayoutX());
+
+//        System.out.println(a.getBoundsInParent()+" layoutBound a x");
+//        System.out.println(b.getBoundsInParent());
+
+    }
+
+    public void checkCollisionLawnmower2( ArrayList<ImageView> zombie){
+        // a lawnmower
+        // b zombie
+
+        Timeline timeline = new Timeline();
+        timelines.add(timeline);
+        timeline.setCycleCount(timeline.INDEFINITE);
+
+        KeyValue keyvalue = new KeyValue(lawnmower2.translateXProperty(), lawnmower2.getLayoutX(), new Interpolator() {
+
+
+
+            int flag=1;
+            @Override
+            protected double curve(double v) {
+
+                for (int j = 0; j < zombie.size(); j++){
+                    ImageView b = zombie.get(j);
+                    if (lawnmower2.getBoundsInParent().intersects(b.getBoundsInParent())) {
+
+                        for (int i = 0; i < arrayList_Zombie.size(); i++) {
+                            if ((b.getId()).equals(arrayList_Zombie.get(i).getFx_id())) {
+                                arrayList_Zombie.get(i).setHealth(0);
+                                flag =0;
+                                lawnmower2.setLayoutX(lawnmower2.getLayoutX()+0.5);
+                                System.out.println(arrayList_Zombie.get(i).getHealth());
+                                if (arrayList_Zombie.get(i).getHealth() == 0) {
+                                    b.setVisible(false);
+                                    b.setLayoutX(b.getLayoutX() - 10000);
+
+                                }
+                            }
+                        }
+                    }}
+                if(flag==0){
+                    lawnmower2.setLayoutX(lawnmower2.getLayoutX()+5);
+                }
+
+                return 0;
+            }
+        });
+
+
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(5),keyvalue);
+        timeline.getKeyFrames().add(keyframe);
+        timeline.play();
+//        System.out.println("collision between "+ a.getId()+" " +b.getId()+ " "+ a.getBoundsInParent().intersects(b.getBoundsInParent()));
+//        System.out.println(a.getLayoutX());
+
+//        System.out.println(a.getBoundsInParent()+" layoutBound a x");
+//        System.out.println(b.getBoundsInParent());
+
+    }
+
+    public void checkCollisionLawnmower3( ArrayList<ImageView> zombie){
+        // a lawnmower
+        // b zombie
+
+        Timeline timeline = new Timeline();
+        timelines.add(timeline);
+        timeline.setCycleCount(timeline.INDEFINITE);
+
+        KeyValue keyvalue = new KeyValue(lawnmower3.translateXProperty(), lawnmower3.getLayoutX(), new Interpolator() {
+
+
+
+            int flag=1;
+            @Override
+            protected double curve(double v) {
+
+                for (int j = 0; j < zombie.size(); j++){
+                    ImageView b = zombie.get(j);
+                    if (lawnmower3.getBoundsInParent().intersects(b.getBoundsInParent())) {
+
+                        for (int i = 0; i < arrayList_Zombie.size(); i++) {
+                            if ((b.getId()).equals(arrayList_Zombie.get(i).getFx_id())) {
+                                arrayList_Zombie.get(i).setHealth(0);
+                                flag =0;
+                                lawnmower3.setLayoutX(lawnmower3.getLayoutX()+0.5);
+                                System.out.println(arrayList_Zombie.get(i).getHealth());
+                                if (arrayList_Zombie.get(i).getHealth() == 0) {
+                                    b.setVisible(false);
+                                    b.setLayoutX(b.getLayoutX() - 10000);
+
+                                }
+                            }
+                        }
+                    }}
+                if(flag==0){
+                    lawnmower3.setLayoutX(lawnmower3.getLayoutX()+5);
+                }
+
+                return 0;
+            }
+        });
+
+
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(5),keyvalue);
+        timeline.getKeyFrames().add(keyframe);
+        timeline.play();
+//        System.out.println("collision between "+ a.getId()+" " +b.getId()+ " "+ a.getBoundsInParent().intersects(b.getBoundsInParent()));
+//        System.out.println(a.getLayoutX());
+
+//        System.out.println(a.getBoundsInParent()+" layoutBound a x");
+//        System.out.println(b.getBoundsInParent());
+
+    }
+
+    public void checkCollisionLawnmower4( ArrayList<ImageView> zombie){
+        // a lawnmower
+        // b zombie
+
+        Timeline timeline = new Timeline();
+        timelines.add(timeline);
+        timeline.setCycleCount(timeline.INDEFINITE);
+
+        KeyValue keyvalue = new KeyValue(lawnmower4.translateXProperty(), lawnmower4.getLayoutX(), new Interpolator() {
+
+
+
+            int flag=1;
+            @Override
+            protected double curve(double v) {
+
+                for (int j = 0; j < zombie.size(); j++){
+                    ImageView b = zombie.get(j);
+                    if (lawnmower4.getBoundsInParent().intersects(b.getBoundsInParent())) {
+
+                        for (int i = 0; i < arrayList_Zombie.size(); i++) {
+                            if ((b.getId()).equals(arrayList_Zombie.get(i).getFx_id())) {
+                                arrayList_Zombie.get(i).setHealth(0);
+                                flag =0;
+                                lawnmower4.setLayoutX(lawnmower4.getLayoutX()+0.5);
+                                System.out.println(arrayList_Zombie.get(i).getHealth());
+                                if (arrayList_Zombie.get(i).getHealth() == 0) {
+                                    b.setVisible(false);
+                                    b.setLayoutX(b.getLayoutX() - 10000);
+
+                                }
+                            }
+                        }
+                    }}
+                if(flag==0){
+                    lawnmower4.setLayoutX(lawnmower4.getLayoutX()+5);
+                }
+
+                return 0;
+            }
+        });
+
+
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(5),keyvalue);
+        timeline.getKeyFrames().add(keyframe);
+        timeline.play();
+//        System.out.println("collision between "+ a.getId()+" " +b.getId()+ " "+ a.getBoundsInParent().intersects(b.getBoundsInParent()));
+//        System.out.println(a.getLayoutX());
+
+//        System.out.println(a.getBoundsInParent()+" layoutBound a x");
+//        System.out.println(b.getBoundsInParent());
+
+    }
+
+    public void checkCollisionLawnmower5( ArrayList<ImageView> zombie){
+        // a lawnmower
+        // b zombie
+
+        Timeline timeline = new Timeline();
+        timelines.add(timeline);
+        timeline.setCycleCount(timeline.INDEFINITE);
+
+        KeyValue keyvalue = new KeyValue(lawnmower2.translateXProperty(), lawnmower2.getLayoutX(), new Interpolator() {
+
+
+
+            int flag=1;
+            @Override
+            protected double curve(double v) {
+
+                for (int j = 0; j < zombie.size(); j++){
+                    ImageView b = zombie.get(j);
+                    if (lawnmower5.getBoundsInParent().intersects(b.getBoundsInParent())) {
+
+                        for (int i = 0; i < arrayList_Zombie.size(); i++) {
+                            if ((b.getId()).equals(arrayList_Zombie.get(i).getFx_id())) {
+                                arrayList_Zombie.get(i).setHealth(0);
+                                flag =0;
+                                lawnmower5.setLayoutX(lawnmower5.getLayoutX()+0.5);
+                                System.out.println(arrayList_Zombie.get(i).getHealth());
+                                if (arrayList_Zombie.get(i).getHealth() == 0) {
+                                    b.setVisible(false);
+                                    b.setLayoutX(b.getLayoutX() - 10000);
+
+                                }
+                            }
+                        }
+                    }}
+                if(flag==0){
+                    lawnmower5.setLayoutX(lawnmower5.getLayoutX()+5);
+                }
+
+                return 0;
+            }
+        });
+
+
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(5),keyvalue);
+        timeline.getKeyFrames().add(keyframe);
+        timeline.play();
+//        System.out.println("collision between "+ a.getId()+" " +b.getId()+ " "+ a.getBoundsInParent().intersects(b.getBoundsInParent()));
+//        System.out.println(a.getLayoutX());
+
+//        System.out.println(a.getBoundsInParent()+" layoutBound a x");
+//        System.out.println(b.getBoundsInParent());
+
+    }
+
     @FXML
     public void quitButtonPressed(ActionEvent event){
         System.exit(0);
