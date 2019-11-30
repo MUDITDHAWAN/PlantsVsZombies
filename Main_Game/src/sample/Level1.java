@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,8 +25,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Level1 extends Level implements Initializable {
+
+    @FXML
+    private Label number_suns;
     @FXML
     private Stage stage;
     @FXML
@@ -54,7 +60,7 @@ public class Level1 extends Level implements Initializable {
     private AnchorPane pane;
 
     @FXML
-    private ImageView zombie1;
+    private ImageView zombie1, suntoken;
     @FXML
     private ImageView peashooter_card,progressbarhead, progressbar2,  peaOfPlacedPlant1, peaOfPlacedPlant2, peaOfPlacedPlant3, peaOfPlacedPlant4, peaOfPlacedPlant5, peaOfPlacedPlant6, peaOfPlacedPlant7, peaOfPlacedPlant8, peaOfPlacedPlant9, onexzero, twoxzero, threexzero, fourxzero, fivexzero, sixxzero, sevenxzero, eightxzero, ninexzero;
 
@@ -160,12 +166,25 @@ public class Level1 extends Level implements Initializable {
         setPlants_Used(new ProjectileShooter(onexzero.getId()));
     }
 
+    @FXML
+    public void getSuntoken( MouseEvent event) {
+        suntoken.setVisible(false);
+        addSun_tokens(25);
+        number_suns.setText(String.valueOf(getSun_tokens()));
+
+    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         zombiemove();
         progressbar();
+        suntoken_move(suntoken);
+
+
+
+
+
     }
     public void progressbar(){
         TranslateTransition translationElement = new TranslateTransition(Duration.seconds(30), progressbarhead);
@@ -197,6 +216,40 @@ public class Level1 extends Level implements Initializable {
 
 
 
+
+    }
+    public void suntoken_move(ImageView  sun){
+//        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(10), sun);
+//        sun.setVisible(true);
+//        translationElement.setFromY(sun.getLayoutY());
+//        translationElement.setToY( sun.getLayoutY()+400 );
+//        translationElement.setCycleCount(translationElement.INDEFINITE);
+//        translationElement.play();
+
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(timeline.INDEFINITE);
+
+        KeyValue keyvalue = new KeyValue(sun.translateYProperty(), sun.getLayoutY(), new Interpolator() {
+            double rest = sun.getLayoutY();
+            @Override
+
+            protected double curve(double v) {
+                if(sun.getLayoutY()<500){
+                    sun.setLayoutY(sun.getLayoutY()+1);
+                }
+                else{
+                    sun.setVisible(true);
+                    sun.setLayoutY(rest);
+                    sun.setLayoutX(sun.getLayoutX()+10);
+                }
+
+                return 0;
+            }
+        });
+
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(5),keyvalue);
+        timeline.getKeyFrames().add(keyframe);
+        timeline.play();
 
     }
     public void plantAttack(ImageView placeHolderPlant) throws FileNotFoundException{

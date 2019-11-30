@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="344.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Level1">
+<AnchorPane fx:id="pane" prefHeight="344.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Level1">
    <children>
       <ImageView id="lawnimage" fitHeight="356.0" fitWidth="600.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -99,10 +99,15 @@
             <Image url="@pvz_images/backyard/prgressbar_head.png" />
          </image>
       </ImageView>
-      <Label layoutX="32.0" layoutY="54.0" text="0" />
+      <Label fx:id="number_suns" layoutX="32.0" layoutY="54.0" prefHeight="17.0" prefWidth="18.0" text="0" />
       <ImageView fitHeight="25.0" fitWidth="200.0" layoutX="357.0" layoutY="14.0" opacity="0.39" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pvz_images/backyard/progressbar1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="suntoken" fitHeight="39.0" fitWidth="48.0" layoutX="139.0" layoutY="4.0" onMouseClicked="#getSuntoken" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pvz_images/backyard/sun.gif" />
          </image>
       </ImageView>
    </children>

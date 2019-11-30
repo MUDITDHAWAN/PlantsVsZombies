@@ -5,6 +5,7 @@ import java.sql.Array;
 import java.util.ArrayList;
 
 public class Level implements Serializable {
+    protected int sun_tokens;
     protected ArrayList<Zombie> arrayList_Zombie = new ArrayList<>();
     protected int number_Tracks;
     protected int level_Number;
@@ -23,6 +24,14 @@ public class Level implements Serializable {
     public ArrayList<Plant> getPlants_Available() { return plants_Available; }
 
     public ArrayList<Plant> getPlants_Used(){ return plants_Used;}
+
+    public int getSun_tokens() {
+        return sun_tokens;
+    }
+
+    public void addSun_tokens(int sun_tokens) {
+        this.sun_tokens = this.sun_tokens+ sun_tokens;
+    }
 
     public void setPlants_Used(Plant new_Plant){
         plants_Used.add(new_Plant);
