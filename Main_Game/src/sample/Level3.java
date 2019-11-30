@@ -118,6 +118,7 @@ public class Level3 extends Level implements Initializable {
         addSun_tokens(25);
         number_suns.setText(String.valueOf(getSun_tokens()));
 
+
     }
 
     @FXML
@@ -195,6 +196,7 @@ public class Level3 extends Level implements Initializable {
         if (type.equalsIgnoreCase("walnut")){
 
             addSun_tokens(-50);
+            barrierhold(onexzero);
         }
         if (type.equalsIgnoreCase("cherry")){
 
@@ -220,6 +222,7 @@ public class Level3 extends Level implements Initializable {
         if (type.equalsIgnoreCase("walnut")){
 
             addSun_tokens(-50);
+            barrierhold(twoxzero);
         }
         if (type.equalsIgnoreCase("cherry")){
 
@@ -246,6 +249,7 @@ public class Level3 extends Level implements Initializable {
         }
         if (type.equalsIgnoreCase("walnut")){
             addSun_tokens(-50);
+            barrierhold(threexzero);
 
         }
         if (type.equalsIgnoreCase("cherry")){
@@ -270,7 +274,7 @@ public class Level3 extends Level implements Initializable {
 
         }
         if (type.equalsIgnoreCase("walnut")){
-            addSun_tokens(-50);
+            addSun_tokens(-50);barrierhold(onexone);
 
         }
         if (type.equalsIgnoreCase("cherry")){
@@ -295,7 +299,7 @@ public class Level3 extends Level implements Initializable {
 
         }
         if (type.equalsIgnoreCase("walnut")){
-            addSun_tokens(-50);
+            addSun_tokens(-50);barrierhold(twoxone);
 
         }
         if (type.equalsIgnoreCase("cherry")){
@@ -320,7 +324,7 @@ public class Level3 extends Level implements Initializable {
 
         }
         if (type.equalsIgnoreCase("walnut")){
-            addSun_tokens(-50);
+            addSun_tokens(-50);barrierhold(threexone);
 
         }
         if (type.equalsIgnoreCase("cherry")){
@@ -345,7 +349,7 @@ public class Level3 extends Level implements Initializable {
 
         }
         if (type.equalsIgnoreCase("walnut")){
-            addSun_tokens(-50);
+            addSun_tokens(-50);barrierhold(onextwo);
 
         }
         if (type.equalsIgnoreCase("cherry")){
@@ -369,7 +373,7 @@ public class Level3 extends Level implements Initializable {
 
         }
         if (type.equalsIgnoreCase("walnut")){
-            addSun_tokens(-50);
+            addSun_tokens(-50);barrierhold(twoxtwo);
 
         }
         if (type.equalsIgnoreCase("cherry")){
@@ -393,7 +397,7 @@ public class Level3 extends Level implements Initializable {
 
         }
         if (type.equalsIgnoreCase("walnut")){
-            addSun_tokens(-50);
+            addSun_tokens(-50);barrierhold(threextwo);
 
         }
         if (type.equalsIgnoreCase("cherry")){
@@ -419,7 +423,7 @@ public class Level3 extends Level implements Initializable {
 
         }
         if (type.equalsIgnoreCase("walnut")){
-            addSun_tokens(-50);
+            addSun_tokens(-50);barrierhold(onexthree);
 
         }
         if (type.equalsIgnoreCase("cherry")){
@@ -444,7 +448,7 @@ public class Level3 extends Level implements Initializable {
 
         }
         if (type.equalsIgnoreCase("walnut")){
-            addSun_tokens(-50);
+            addSun_tokens(-50);barrierhold(twoxthree);
 
         }
         if (type.equalsIgnoreCase("cherry")){
@@ -469,7 +473,7 @@ public class Level3 extends Level implements Initializable {
 
         }
         if (type.equalsIgnoreCase("walnut")){
-            addSun_tokens(-50);
+            addSun_tokens(-50);barrierhold(threexthree);
 
         }
         if (type.equalsIgnoreCase("cherry")){
@@ -495,7 +499,7 @@ public class Level3 extends Level implements Initializable {
 
         }
         if (type.equalsIgnoreCase("walnut")){
-            addSun_tokens(-50);
+            addSun_tokens(-50);barrierhold(onexfour);
 
         }
         if (type.equalsIgnoreCase("cherry")){
@@ -522,7 +526,7 @@ public class Level3 extends Level implements Initializable {
 
         }
         if (type.equalsIgnoreCase("walnut")){
-            addSun_tokens(-50);
+            addSun_tokens(-50);barrierhold(twoxfour);
 
         }
         if (type.equalsIgnoreCase("cherry")){
@@ -549,7 +553,7 @@ public class Level3 extends Level implements Initializable {
 
         }
         if (type.equalsIgnoreCase("walnut")){
-            addSun_tokens(-50);
+            addSun_tokens(-50);barrierhold(threexfour);
 
         }
         if (type.equalsIgnoreCase("cherry")){
@@ -618,7 +622,7 @@ public class Level3 extends Level implements Initializable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        int t = -500;
+        int t = -700;
         for(int i = 0;i<zombies1.size();i++){
             Timeline timeline = new Timeline();
             timelines.add(timeline);
@@ -638,7 +642,7 @@ public class Level3 extends Level implements Initializable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        int t = -500;
+        int t = -700;
         for(int i = 0;i<zombies2.size();i++){
             Timeline timeline = new Timeline();
             timelines.add(timeline);
@@ -658,7 +662,7 @@ public class Level3 extends Level implements Initializable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        int t = -500;
+        int t = -700;
         for(int i = 0;i<zombies3.size();i++){
             Timeline timeline = new Timeline();
             timelines.add(timeline);
@@ -678,7 +682,7 @@ public class Level3 extends Level implements Initializable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        int t = -500;
+        int t = -700;
         for(int i = 0;i<zombies4.size();i++){
             Timeline timeline = new Timeline();
             timelines.add(timeline);
@@ -698,7 +702,7 @@ public class Level3 extends Level implements Initializable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        int t = -500;
+        int t = -700;
         for(int i = 0;i<zombies5.size();i++){
             Timeline timeline = new Timeline();
             timelines.add(timeline);
@@ -709,6 +713,63 @@ public class Level3 extends Level implements Initializable {
             t -= 100;
         }
 
+    }
+
+    public void barrierhold(ImageView placeHolderPlant){
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(timeline.INDEFINITE);
+        final int[] counter = {10};
+        KeyValue keyvalue = new KeyValue(placeHolderPlant.translateXProperty(), placeHolderPlant.getLayoutX(), new Interpolator() {
+            @Override
+
+            protected double curve(double v) {
+                for(int i = 0;i<zombies1.size();i++){
+                    if(zombies1.get(i).getBoundsInParent().intersects(placeHolderPlant.getBoundsInParent())&& counter[0] >0){
+                        zombies1.get(i).setLayoutX(zombies1.get(i).getLayoutX()+10);
+                        counter[0]--;
+
+                    }
+                }
+                for(int i = 0;i<zombies2.size();i++){
+                    if(zombies2.get(i).getBoundsInParent().intersects(placeHolderPlant.getBoundsInParent())&& counter[0] >0){
+                        zombies2.get(i).setLayoutX(zombies2.get(i).getLayoutX()+10);
+                        counter[0]--;
+
+                    }
+                }
+                for(int i = 0;i<zombies3.size();i++){
+                    if(zombies3.get(i).getBoundsInParent().intersects(placeHolderPlant.getBoundsInParent())&& counter[0] >0){
+                        zombies3.get(i).setLayoutX(zombies3.get(i).getLayoutX()+10);
+                        counter[0]--;
+
+                    }
+                }
+                for(int i = 0;i<zombies4.size();i++){
+                    if(zombies4.get(i).getBoundsInParent().intersects(placeHolderPlant.getBoundsInParent())&& counter[0] >0){
+                        zombies4.get(i).setLayoutX(zombies4.get(i).getLayoutX()+10);
+                        counter[0]--;
+
+                    }
+                }
+                for(int i = 0;i<zombies5.size();i++){
+                    if(zombies5.get(i).getBoundsInParent().intersects(placeHolderPlant.getBoundsInParent())&& counter[0] >0){
+                        zombies5.get(i).setLayoutX(zombies5.get(i).getLayoutX()+10);
+                        counter[0]--;
+
+                    }
+                }
+                if (counter[0]<=0){
+                    placeHolderPlant.setVisible(false);
+                }
+                return 0;
+            }
+        });
+
+            KeyFrame keyframe = new KeyFrame(Duration.seconds(10), keyvalue);
+        timeline.getKeyFrames().
+
+            add(keyframe);
+        timeline.play();
     }
 
     public void sunGenerate(ImageView placeHolderPlant) throws FileNotFoundException {
@@ -756,6 +817,31 @@ public class Level3 extends Level implements Initializable {
                     intermediate=0;
 
                 }}
+                for(int i = 0;i<zombies1.size();i++){
+                    if(zombies1.get(i).getBoundsInParent().intersects(placeHolderPlant.getBoundsInParent())){
+                        placeHolderPlant.setVisible(false);
+                    }
+                }
+                for(int i = 0;i<zombies2.size();i++){
+                    if(zombies2.get(i).getBoundsInParent().intersects(placeHolderPlant.getBoundsInParent())){
+                        placeHolderPlant.setVisible(false);
+                    }
+                }
+                for(int i = 0;i<zombies3.size();i++){
+                    if(zombies3.get(i).getBoundsInParent().intersects(placeHolderPlant.getBoundsInParent())){
+                        placeHolderPlant.setVisible(false);
+                    }
+                }
+                for(int i = 0;i<zombies4.size();i++){
+                    if(zombies4.get(i).getBoundsInParent().intersects(placeHolderPlant.getBoundsInParent())){
+                        placeHolderPlant.setVisible(false);
+                    }
+                }
+                for(int i = 0;i<zombies5.size();i++){
+                    if(zombies5.get(i).getBoundsInParent().intersects(placeHolderPlant.getBoundsInParent())){
+                        placeHolderPlant.setVisible(false);
+                    }
+                }
 
                 return 0;
             }
