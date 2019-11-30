@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -97,7 +98,12 @@ public class Level3 extends Level implements Initializable {
         }
         return zombies;
     }
-
+    @FXML
+    Parent mainscreen;
+@FXML
+    Button winbut;
+    @FXML
+    Stage stage;
     @FXML
     private AnchorPane anchor;
 
@@ -1122,6 +1128,49 @@ public class Level3 extends Level implements Initializable {
                 if(flag==0){
                     lawnmower1.setLayoutX(lawnmower1.getLayoutX()+5);
                 }
+                int counter = 0;
+                for(int i = 0;i<zombies1.size();i++){
+                    if(!zombies1.get(i).isVisible()){
+
+                        counter++;
+                    }
+                }
+                for(int i = 0;i<zombies2.size();i++){
+                    if(!zombies2.get(i).isVisible()){
+
+                        counter++;
+                    }
+                }
+                for(int i = 0;i<zombies3.size();i++){
+                    if(!zombies3.get(i).isVisible()){
+
+                        counter++;
+                    }
+                }
+                for(int i = 0;i<zombies4.size();i++){
+                    if(!zombies4.get(i).isVisible()){
+
+                        counter++;
+                    }
+                }
+                for(int i = 0;i<zombies5.size();i++){
+                    if(!zombies5.get(i).isVisible()){
+
+                        counter++;
+                    }
+                }
+                if(counter == zombies1.size()+zombies2.size()+zombies3.size()+zombies4.size()+zombies5.size()){
+//
+//                    pane.setVisible(false);
+//                    pane.setDisable(true);
+//                    winpane.setDisable(false);
+//                    winpane.setVisible(true);
+//                    System.out.println("test");
+                    winbut.setVisible(true);
+
+
+                }
+
 
                 return 0;
             }
@@ -1372,5 +1421,17 @@ public class Level3 extends Level implements Initializable {
             timelines.get(i).play();
         }
     }
+    @FXML
+    public void mainmenu(ActionEvent event) throws IOException {
+        createScene(mainscreen,"mainpage.fxml",event);
+    }
+    private void createScene(Parent p,String fxmlfile,ActionEvent event) throws IOException {
+        p =  FXMLLoader.load(getClass().getResource(fxmlfile));
+        Scene scene = new Scene(p);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.show();
+        stage.setScene(scene);
+    }
 }
+
 

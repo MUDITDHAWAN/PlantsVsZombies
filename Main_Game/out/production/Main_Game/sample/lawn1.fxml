@@ -112,5 +112,6 @@
       <Button layoutX="506.0" layoutY="295.0" mnemonicParsing="false" onAction="#onPlay" text="play" />
       <Button layoutX="404.0" layoutY="295.0" mnemonicParsing="false" onAction="#quitButtonPressed" text="Quit" />
       <Button layoutX="320.0" layoutY="295.0" mnemonicParsing="false" onAction="#onSaveGame" text="Save Game" />
+      <Button fx:id="winbut" layoutX="-7.0" layoutY="-5.0" mnemonicParsing="false" onAction="#mainmenu" prefHeight="357.0" prefWidth="613.0" text="killed all zombies, back to main menu" visible="false" />
    </children>
 </AnchorPane>

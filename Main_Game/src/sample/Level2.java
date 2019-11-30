@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -52,12 +53,16 @@ public class Level2 extends Level implements Initializable {
 
 
     }
-
+    @FXML
+    Parent mainscreen;
+    @FXML
+    Stage stage;
     @FXML
     private Label number_suns;
     @FXML
     private ImageView lawnmower1, lawnmower2, lawnmower3, suntoken,peashooter_card,sunflower_card, onexzero, twoxzero, threexzero, onexone, twoxone, threexone, onextwo, twoxtwo, threextwo;
-
+    @FXML
+    Button winbut;
     @FXML
     AnchorPane anchor;
     @FXML
@@ -632,8 +637,41 @@ public class Level2 extends Level implements Initializable {
             if(flag==0){
                 lawnmower1.setLayoutX(lawnmower1.getLayoutX()+5);
             }
+            int counter = 0;
+            for(int i = 0;i<zombies1.size();i++){
+                if(!zombies1.get(i).isVisible()){
 
-            return 0;
+                    counter++;
+                }
+            }
+            for(int i = 0;i<zombies2.size();i++){
+                if(!zombies2.get(i).isVisible()){
+
+                    counter++;
+                }
+            }
+            for(int i = 0;i<zombies3.size();i++){
+                if(!zombies3.get(i).isVisible()){
+
+                    counter++;
+                }
+            }
+            if(counter == zombies1.size()+zombies2.size()+zombies3.size()){
+//
+//                    pane.setVisible(false);
+//                    pane.setDisable(true);
+//                    winpane.setDisable(false);
+//                    winpane.setVisible(true);
+//                    System.out.println("test");
+                winbut.setVisible(true);
+
+
+            }
+
+
+
+
+        return 0;
         }
     });
 
@@ -775,5 +813,16 @@ public class Level2 extends Level implements Initializable {
             }
         }
 
+    }
+    @FXML
+    public void mainmenu(ActionEvent event) throws IOException {
+        createScene(mainscreen,"mainpage.fxml",event);
+    }
+    private void createScene(Parent p,String fxmlfile,ActionEvent event) throws IOException {
+        p =  FXMLLoader.load(getClass().getResource(fxmlfile));
+        Scene scene = new Scene(p);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.show();
+        stage.setScene(scene);
     }
 }

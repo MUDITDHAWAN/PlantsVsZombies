@@ -40,9 +40,11 @@ public class Level1 extends Level implements Initializable {
     @FXML
     Parent login;
     @FXML
-    private AnchorPane pane;
+    private AnchorPane pane,winpane;
     @FXML
-    Button menubut;
+    Button menubut, winbut;
+    @FXML
+    Parent mainscreen;
     @FXML
     private ImageView zombie1, suntoken, lawnmower1;
     @FXML
@@ -206,6 +208,7 @@ public class Level1 extends Level implements Initializable {
         progressbar();
         suntoken_move(suntoken);
         checkCollisionLawnmower(zombies);
+//        gameWin();
 
 
 
@@ -315,6 +318,39 @@ public class Level1 extends Level implements Initializable {
         timeline.play();
 
     }
+
+//    public void gameWin(){
+//        Timeline timeline = new Timeline();
+//        timeline.setCycleCount(timeline.INDEFINITE);
+//
+//        KeyValue keyvalue = new KeyValue(onexzero.translateXProperty(), 100, new Interpolator() {
+//            @Override
+//            protected double curve(double v) {
+//                boolean flag = false;
+//                for(int i = 0;i<arrayList_Zombie.size();i++){
+//                    if(arrayList_Zombie.get(i).getHealth()!=0){
+//                        flag = true;
+//                    }
+//                }
+//                if(!flag){
+////
+//                    pane.setVisible(false);
+//                    pane.setDisable(true);
+////                    winpane.setDisable(false);
+////                    winpane.setVisible(true);
+//
+//
+//
+//                }
+//                return 0;
+//            }
+//        });
+//        KeyFrame keyframe = new KeyFrame(Duration.seconds(5),keyvalue);
+//        timeline.getKeyFrames().add(keyframe);
+//        timeline.play();
+//
+//    }
+
     public void plantAttack(ImageView placeHolderPlant) throws FileNotFoundException{
         double posX= placeHolderPlant.getLayoutX()+placeHolderPlant.getFitWidth();
         double posY = placeHolderPlant.getLayoutY();
@@ -370,6 +406,7 @@ public class Level1 extends Level implements Initializable {
                     if(zombies.get(i)!=null)
                         checkCollision(finalPeaOfPlacedPlant,zombies.get(i));
                 }
+                boolean flag=false;
 
                 return 0;
             }
@@ -380,51 +417,18 @@ public class Level1 extends Level implements Initializable {
 
 
     }
+
+
     @FXML
     public void quitButtonPressed(ActionEvent event){
         System.exit(0);
     }
 
+    @FXML
+    public void mainmenu(ActionEvent event) throws IOException {
+        createScene(mainscreen,"mainpage.fxml",event);
+    }
 
-//    public void onMenu(ActionEvent event) throws IOException {
-//
-////        Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
-//////        Stage popup = new Stage();
-//////        Scene s = new Scene(root);
-//////        popup.setScene(s);
-//////        popup.show();
-////        menubut.setOnAction(EventHandler<ActionEvent>(){
-////            @Override
-////                    public void handle(){
-////
-////            }
-////        });
-//        menubut = new Button();
-//        menubut.setOnAction(new EventHandler<ActionEvent>() {
-//
-//            @Override
-//            public void handle(ActionEvent event) {
-//
-//                Label secondLabel = new Label("I'm a Label on new Window");
-//
-//                Pane secondaryLayout = new Pane();
-//                secondaryLayout.getChildren().add(secondLabel);
-//
-//                Scene secondScene = new Scene(secondaryLayout, 230, 100);
-//
-//                // New window (Stage)
-//                Stage newWindow = new Stage();
-//                newWindow.setTitle("Second Stage");
-//                newWindow.setScene(secondScene);
-//
-//                // Set position of second window, related to primary window.
-//
-//                newWindow.show();
-//            }
-//        });
-//
-//
-//    }
     @FXML
     public void onPause(ActionEvent event){
         for(int i = 0;i<timelines.size();i++){
@@ -527,8 +531,27 @@ public class Level1 extends Level implements Initializable {
                     if(flag==0){
                         lawnmower1.setLayoutX(lawnmower1.getLayoutX()+5);
                     }
+                int counter = 0;
+                for(int i = 0;i<zombies.size();i++){
+                    if(!zombies.get(i).isVisible()){
 
-                    return 0;
+                        counter++;
+                    }
+                }
+                if(counter == zombies.size()){
+//
+//                    pane.setVisible(false);
+//                    pane.setDisable(true);
+//                    winpane.setDisable(false);
+//                    winpane.setVisible(true);
+//                    System.out.println("test");
+                    winbut.setVisible(true);
+
+
+                }
+
+
+                return 0;
                 }
         });
 
