@@ -88,7 +88,9 @@ public class Level3 extends Level implements Initializable {
                 zombiecone.setLayoutY(y*row*7);
                 zombiecone.setFitWidth(50);
                 zombiecone.setFitHeight(80);
-                arrayList_Zombie.add(new Zombie("zombiecone"+String.valueOf(i)+String.valueOf(row)));
+                Zombie toadd = new Zombie("zombiecone"+String.valueOf(i)+String.valueOf(row));
+                toadd.setHealth(200);
+                arrayList_Zombie.add(toadd);
             }
 
             x += 100*(rand.nextInt(level_Number*2)+1)/2;
@@ -418,6 +420,7 @@ public class Level3 extends Level implements Initializable {
 //        translationElement.play();
 
         Timeline timeline = new Timeline();
+        timelines.add(timeline);
         timeline.setCycleCount(timeline.INDEFINITE);
 
         KeyValue keyvalue = new KeyValue(sun.translateYProperty(), sun.getLayoutY(), new Interpolator() {
@@ -670,7 +673,7 @@ public class Level3 extends Level implements Initializable {
                         finalPeaOfPlacedPlant.setLayoutX(-200000);
                     }
                     if (finalPeaOfPlacedPlant.getLayoutX()<600){
-                        finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+0.5);
+                        finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+0.1);
                     }
                     else{
                         finalPeaOfPlacedPlant.setLayoutX(posx);
@@ -692,7 +695,7 @@ public class Level3 extends Level implements Initializable {
                         finalPeaOfPlacedPlant.setLayoutX(-200000);
                     }
                     if (finalPeaOfPlacedPlant.getLayoutX()<600){
-                        finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+0.5);
+                        finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+0.1);
                     }
                     else{
                         finalPeaOfPlacedPlant.setLayoutX(posx);
@@ -713,7 +716,7 @@ public class Level3 extends Level implements Initializable {
                         finalPeaOfPlacedPlant.setLayoutX(-200000);
                     }
                     if (finalPeaOfPlacedPlant.getLayoutX()<600){
-                        finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+0.5);
+                        finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+0.1);
                     }
                     else{
                         finalPeaOfPlacedPlant.setLayoutX(posx);
@@ -734,7 +737,7 @@ public class Level3 extends Level implements Initializable {
                         finalPeaOfPlacedPlant.setLayoutX(-200000);
                     }
                     if (finalPeaOfPlacedPlant.getLayoutX()<600){
-                        finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+0.5);
+                        finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+0.1);
                     }
                     else{
                         finalPeaOfPlacedPlant.setLayoutX(posx);
@@ -747,7 +750,7 @@ public class Level3 extends Level implements Initializable {
                 return 0;
             }
         });
-        KeyFrame keyframe = new KeyFrame(Duration.seconds(10),keyvalue);
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(30),keyvalue);
         timeline.getKeyFrames().add(keyframe);
         timeline.play();
 
@@ -771,6 +774,30 @@ public class Level3 extends Level implements Initializable {
                     }
                 }
             }
+        }
+    }
+
+    @FXML
+    public void onSaveGame(ActionEvent event) throws IOException {
+
+
+
+    }
+    @FXML
+    public void quitButtonPressed(ActionEvent event){
+        System.exit(0);
+    }
+    @FXML
+    public void onPause(ActionEvent event){
+        for(int i = 0;i<timelines.size();i++){
+            timelines.get(i).pause();
+        }
+
+    }
+    @FXML
+    public void onPlay(){
+        for(int i = 0;i<timelines.size();i++){
+            timelines.get(i).play();
         }
     }
 }

@@ -336,6 +336,7 @@ public class Level2 extends Level implements Initializable {
 //        translationElement.play();
 
         Timeline timeline = new Timeline();
+        timelines.add(timeline);
         timeline.setCycleCount(timeline.INDEFINITE);
 
         KeyValue keyvalue = new KeyValue(sun.translateYProperty(), sun.getLayoutY(), new Interpolator() {
@@ -523,6 +524,29 @@ public class Level2 extends Level implements Initializable {
         KeyFrame keyframe = new KeyFrame(Duration.seconds(10),keyvalue);
         timeline.getKeyFrames().add(keyframe);
         timeline.play();
+
+
+    }
+    @FXML
+    public void quitButtonPressed(ActionEvent event){
+        System.exit(0);
+    }
+    @FXML
+    public void onPause(ActionEvent event){
+        for(int i = 0;i<timelines.size();i++){
+            timelines.get(i).pause();
+        }
+
+    }
+    @FXML
+    public void onPlay(){
+        for(int i = 0;i<timelines.size();i++){
+            timelines.get(i).play();
+        }
+    }
+    @FXML
+    public void onSaveGame(ActionEvent event) throws IOException {
+
 
 
     }
