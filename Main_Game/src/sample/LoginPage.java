@@ -37,6 +37,7 @@ import javafx.stage.Stage;
 
 
 public class LoginPage {
+    public Game pvz;
     public String username="";
     @FXML
     private TextField textarea;
@@ -71,8 +72,9 @@ public class LoginPage {
         String user = textarea.getText();
         setUsername(user);
         System.out.println(username);
-        Game pvz = new Game(getUsername());
+        pvz = new Game(getUsername());
         createScene(mainpage,"mainpage.fxml",event);
+
 
     }
 
