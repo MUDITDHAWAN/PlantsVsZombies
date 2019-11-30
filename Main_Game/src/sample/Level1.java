@@ -238,7 +238,7 @@ public class Level1 extends Level implements Initializable {
 
     }
     public void progressbar(){
-        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(30), progressbarhead);
+        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(70), progressbarhead);
         translationElement.setCycleCount(1);
         translationElement.setFromX(progressbarhead.getX() );
         translationElement.setToX( progressbarhead.getX()-160);

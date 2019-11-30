@@ -89,10 +89,20 @@
          </image>
       </ImageView>
       <Label fx:id="number_suns" layoutX="27.0" layoutY="66.0" prefHeight="17.0" prefWidth="28.0" text="0" />
-      <Button layoutX="478.0" layoutY="17.0" mnemonicParsing="false" onAction="#onPlay" text="Play" />
-      <Button layoutX="528.0" layoutY="17.0" mnemonicParsing="false" onAction="#onPause" text="Pause" />
-      <Button layoutX="478.0" layoutY="54.0" mnemonicParsing="false" onAction="#quitButtonPressed" text="Quit" />
-      <Button layoutX="531.0" layoutY="54.0" mnemonicParsing="false" onAction="#onSaveGame" text="Save" />
+      <Button layoutX="428.0" layoutY="5.0" mnemonicParsing="false" onAction="#onPlay" text="Play" />
+      <Button layoutX="479.0" layoutY="5.0" mnemonicParsing="false" onAction="#onPause" text="Pause" />
+      <Button layoutX="376.0" layoutY="5.0" mnemonicParsing="false" onAction="#quitButtonPressed" text="Quit" />
+      <Button layoutX="534.0" layoutY="5.0" mnemonicParsing="false" onAction="#onSaveGame" text="Save" />
       <Button fx:id="winbut" layoutX="3.0" layoutY="5.0" mnemonicParsing="false" onAction="#mainmenu" prefHeight="357.0" prefWidth="613.0" text="killed all zombies, back to main menu" visible="false" />
+      <ImageView fitHeight="25.0" fitWidth="200.0" layoutX="379.0" layoutY="56.0" opacity="0.39" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pvz_images/backyard/progressbar1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="progressbarhead" fitHeight="38.0" fitWidth="39.0" layoutX="550.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pvz_images/backyard/prgressbar_head.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
