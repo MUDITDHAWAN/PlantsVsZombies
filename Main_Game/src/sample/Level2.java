@@ -138,6 +138,7 @@ public class Level2 extends Level implements Initializable {
         if (type.equalsIgnoreCase("sun")){
             sunGenerate(onexzero);
             addSun_tokens(-50);
+            plantCollision(onexzero);
         }
 
     }
@@ -153,6 +154,7 @@ public class Level2 extends Level implements Initializable {
         if (type.equalsIgnoreCase("sun")){
             sunGenerate(twoxzero);
             addSun_tokens(-50);
+            plantCollision(twoxzero);
         }
     }
     @FXML
@@ -167,6 +169,7 @@ public class Level2 extends Level implements Initializable {
         if (type.equalsIgnoreCase("sun")){
             sunGenerate(threexzero);
             addSun_tokens(-50);
+            plantCollision(threexzero);
         }
     }
 
@@ -182,6 +185,7 @@ public class Level2 extends Level implements Initializable {
         if (type.equalsIgnoreCase("sun")){
             sunGenerate(onexone);
             addSun_tokens(-50);
+            plantCollision(onexone);
         }
     }
     @FXML
@@ -196,6 +200,7 @@ public class Level2 extends Level implements Initializable {
         if (type.equalsIgnoreCase("sun")){
             sunGenerate(twoxone);
             addSun_tokens(-50);
+            plantCollision(twoxone);
         }
     }
     @FXML
@@ -210,6 +215,7 @@ public class Level2 extends Level implements Initializable {
         if (type.equalsIgnoreCase("sun")){
             sunGenerate(threexone);
             addSun_tokens(-50);
+            plantCollision(threexone);
         }
     }
 
@@ -224,6 +230,7 @@ public class Level2 extends Level implements Initializable {
         }
         if (type.equalsIgnoreCase("sun")){
             sunGenerate(onextwo);addSun_tokens(-50);
+            plantCollision(onextwo);
         }
     }
     @FXML
@@ -237,6 +244,7 @@ public class Level2 extends Level implements Initializable {
         }
         if (type.equalsIgnoreCase("sun")){
             sunGenerate(twoxtwo);addSun_tokens(-50);
+            plantCollision(twoxtwo);
         }
     }
     @FXML
@@ -252,6 +260,7 @@ public class Level2 extends Level implements Initializable {
         if (type.equalsIgnoreCase("sun")){
             sunGenerate(threextwo);
             addSun_tokens(-50);
+            plantCollision(threextwo);
         }
 
     }
@@ -421,6 +430,38 @@ public class Level2 extends Level implements Initializable {
         timeline.play();
 
     }
+
+
+    public void plantCollision(ImageView plant){
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(timeline.INDEFINITE);
+
+        KeyValue keyvalue = new KeyValue(plant.translateXProperty(), plant.getLayoutX(), new Interpolator() {
+            @Override
+            protected double curve(double v) {
+                for(int i = 0;i<zombies1.size();i++){
+                    if(zombies1.get(i).getBoundsInParent().intersects(plant.getBoundsInParent())){
+                        plant.setVisible(false);
+                    }
+                }
+                for(int i = 0;i<zombies2.size();i++){
+                    if(zombies2.get(i).getBoundsInParent().intersects(plant.getBoundsInParent())){
+                        plant.setVisible(false);
+                    }
+                }
+                for(int i = 0;i<zombies3.size();i++){
+                    if(zombies3.get(i).getBoundsInParent().intersects(plant.getBoundsInParent())){
+                        plant.setVisible(false);
+                    }
+                }
+                return 0;
+            }
+        });
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(10),keyvalue);
+        timeline.getKeyFrames().add(keyframe);
+        timeline.play();
+    }
+
     public void plantAttack(ImageView placeHolderPlant) throws FileNotFoundException{
         double posX= placeHolderPlant.getLayoutX()+placeHolderPlant.getFitWidth();
         double posY = placeHolderPlant.getLayoutY();
