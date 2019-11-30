@@ -4,7 +4,8 @@ public class Plant extends Character {
     private int recharge;
     private int cost;
 
-    public Plant() {
+    public Plant(String id) {
+        super(id);
     }
 
     public int getCost() {

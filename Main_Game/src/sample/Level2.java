@@ -30,18 +30,18 @@ public class Level2 extends Level implements Initializable {
         int number_of_Zombies= 5;
 
         for(int i=0; i< number_of_Zombies; i++){
-            arrayList_Zombie.add( new Zombie());
+            arrayList_Zombie.add( new Zombie("trying"));
         }
         number_Tracks= 3;
 
         level_Number =2;
 
         for(int j=0 ; j<number_Tracks; j++){
-            array_Lawnmower.add(new LawnMower());
+            array_Lawnmower.add(new LawnMower("trying"));
         }
 
-        plants_Available.add( new ProjectileShooter());
-        plants_Available.add( new SunPlant());
+        plants_Available.add( new ProjectileShooter("trying"));
+        plants_Available.add( new SunPlant("trying"));
 
 
     }

@@ -13,9 +13,10 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
+import java.lang.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -30,20 +31,24 @@ public class Level1 extends Level implements Initializable {
         int number_of_Zombies= 3;
 
         for(int i=0; i< number_of_Zombies; i++){
-            arrayList_Zombie.add( new Zombie());
+            String new_id  = "zombie";
+            arrayList_Zombie.add( new Zombie(new_id + String.valueOf(i+1)));
         }
         number_Tracks= 1;
 
         level_Number =1;
 
         for(int j=0 ; j<number_Tracks; j++){
-            array_Lawnmower.add(new LawnMower());
+            String new_id  = "lawnmower";
+            array_Lawnmower.add(new LawnMower(new_id+String.valueOf(j+1)));
         }
 
-        plants_Available.add( new ProjectileShooter());
+        plants_Available.add( new ProjectileShooter("peashooter_card"));
 
 
     }
+    @FXML
+    private AnchorPane pane;
 
     @FXML
     private ImageView zombie1;
@@ -80,7 +85,7 @@ public class Level1 extends Level implements Initializable {
         onexzero.setImage(peashooter_img);
         handlePlantCollision(onexzero);
         plantAttack(onexzero);
-
+        setPlants_Used(new ProjectileShooter(onexzero.getId()));
     }
     @FXML
     public void handleDragDrop2(DragEvent event) throws FileNotFoundException{
@@ -88,6 +93,7 @@ public class Level1 extends Level implements Initializable {
         twoxzero.setImage(peashooter_img);
         handlePlantCollision(twoxzero);
         plantAttack(twoxzero);
+        setPlants_Used(new ProjectileShooter(onexzero.getId()));
     }
     @FXML
     public void handleDragDrop3(DragEvent event) throws FileNotFoundException{
@@ -95,6 +101,7 @@ public class Level1 extends Level implements Initializable {
         threexzero.setImage(peashooter_img);
         handlePlantCollision(threexzero);
         plantAttack(threexzero);
+        setPlants_Used(new ProjectileShooter(onexzero.getId()));
     }
     @FXML
     public void handleDragDrop4(DragEvent event) throws FileNotFoundException{
@@ -102,6 +109,7 @@ public class Level1 extends Level implements Initializable {
         fourxzero.setImage(peashooter_img);
         handlePlantCollision(fourxzero);
         plantAttack(fourxzero);
+        setPlants_Used(new ProjectileShooter(onexzero.getId()));
     }
     @FXML
     public void handleDragDrop5(DragEvent event) throws FileNotFoundException{
@@ -109,6 +117,7 @@ public class Level1 extends Level implements Initializable {
         fivexzero.setImage(peashooter_img);
         handlePlantCollision(fivexzero);
         plantAttack(fivexzero);
+        setPlants_Used(new ProjectileShooter(onexzero.getId()));
     }
     @FXML
     public void handleDragDrop6(DragEvent event) throws FileNotFoundException{
@@ -116,6 +125,7 @@ public class Level1 extends Level implements Initializable {
         sixxzero.setImage(peashooter_img);
         handlePlantCollision(sixxzero);
         plantAttack(sixxzero);
+        setPlants_Used(new ProjectileShooter(onexzero.getId()));
     }
     @FXML
     public void handleDragDrop7(DragEvent event) throws FileNotFoundException{
@@ -123,18 +133,21 @@ public class Level1 extends Level implements Initializable {
         sevenxzero.setImage(peashooter_img);
         handlePlantCollision(sevenxzero);
         plantAttack(sevenxzero);
+        setPlants_Used(new ProjectileShooter(onexzero.getId()));
     }@FXML
     public void handleDragDrop8(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         eightxzero.setImage(peashooter_img);
         handlePlantCollision(eightxzero);
         plantAttack(eightxzero);
+        setPlants_Used(new ProjectileShooter(onexzero.getId()));
     }@FXML
     public void handleDragDrop9(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         ninexzero.setImage(peashooter_img);
         handlePlantCollision(ninexzero);
         plantAttack(ninexzero);
+        setPlants_Used(new ProjectileShooter(onexzero.getId()));
     }
 
 
@@ -239,12 +252,16 @@ public class Level1 extends Level implements Initializable {
         timeline.setCycleCount(timeline.INDEFINITE);
         ImageView finalPeaOfPlacedPlant = peaOfPlacedPlant;
         KeyValue keyvalue = new KeyValue(peaOfPlacedPlant.translateXProperty(), 400, new Interpolator() {
+
             double posx = finalPeaOfPlacedPlant.getLayoutX();
             @Override
             protected double curve(double v) {
+//                for(int i=0; i<plants_Used.size(); i++){
+//                    System.out.println(plants_Used.get(i));
+//                }
                 if(placeHolderPlant.getBoundsInParent().intersects(zombie1.getBoundsInParent())){
 
-                    System.out.println("collision between "+placeHolderPlant.getId()+" "+zombie1.getId());
+//                    System.out.println("collision between "+placeHolderPlant.getId()+" "+zombie1.getId());
 
                     placeHolderPlant.setVisible(false);
                     finalPeaOfPlacedPlant.setVisible(false);
@@ -256,8 +273,8 @@ public class Level1 extends Level implements Initializable {
                     finalPeaOfPlacedPlant.setLayoutX(posx);
                     finalPeaOfPlacedPlant.setVisible(true);
                 }
-
-                checkCollision(finalPeaOfPlacedPlant,zombie1);
+                if(zombie1!=null)
+                    checkCollision(finalPeaOfPlacedPlant,zombie1);
                 return 0;
             }
         });
@@ -280,6 +297,19 @@ public class Level1 extends Level implements Initializable {
 //        System.out.println(a.getLayoutX());
         if (a.getBoundsInParent().intersects(b.getBoundsInParent())){
             a.setVisible(false);
+
+            a.setLayoutX(a.getLayoutX()+100);
+            for(int i =0; i<arrayList_Zombie.size(); i++){
+                if((b.getId()).equals(arrayList_Zombie.get(i).getFx_id())){
+                    arrayList_Zombie.get(i).decrementHealth(20);
+                    System.out.println(arrayList_Zombie.get(i).getHealth());
+                    if(arrayList_Zombie.get(i).getHealth()==0){
+                        b.setVisible(false);
+                        b.setLayoutX(b.getLayoutX()-1000);
+//                        pane.getChildren().remove(b);
+                    }
+                }
+            }
         }
 //        System.out.println(a.getBoundsInParent()+" layoutBound a x");
 //        System.out.println(b.getBoundsInParent());

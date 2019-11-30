@@ -20,7 +20,8 @@ public class Zombie extends Character{
         this.speed = speed;
     }
 
-    public Zombie() {
+    public Zombie(String id) {
+        super(id);
     }
 
     public void move(){

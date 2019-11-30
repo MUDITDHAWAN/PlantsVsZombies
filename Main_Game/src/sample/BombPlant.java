@@ -4,7 +4,8 @@ public class BombPlant extends Plant {
     private int blast_radius;
     private int setup_time;
 
-    public BombPlant() {
+    public BombPlant(String id) {
+        super(id);
     }
     public void blowup(){
 

@@ -3,7 +3,8 @@ package sample;
 public class SunPlant extends Plant {
     private int sun_regenerate_time;
 
-    public SunPlant() {
+    public SunPlant(String id) {
+        super(id);
     }
     public void generateSun(){
 

@@ -3,7 +3,8 @@ package sample;
 public class BarrierPlant extends Plant {
     private int hold_time;
 
-    public BarrierPlant() {
+    public BarrierPlant(String id) {
+        super(id);
     }
 
     public int getHold_time() {

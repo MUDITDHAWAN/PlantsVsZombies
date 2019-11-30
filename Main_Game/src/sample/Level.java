@@ -1,9 +1,10 @@
 package sample;
 
+import java.io.Serializable;
 import java.sql.Array;
 import java.util.ArrayList;
 
-public class Level {
+public class Level implements Serializable {
     protected ArrayList<Zombie> arrayList_Zombie = new ArrayList<>();
     protected int number_Tracks;
     protected int level_Number;
