@@ -13,6 +13,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -50,12 +51,15 @@ public class Level2 extends Level implements Initializable {
     private ImageView peashooter_card,sunflower_card, onexzero, twoxzero, threexzero, onexone, twoxone, threexone, onextwo, twoxtwo, threextwo;
 
     @FXML
+    AnchorPane anchor;
+    @FXML
     public void handleDragDetectedPeashooter(MouseEvent event) throws FileNotFoundException{
         Dragboard db = peashooter_card.startDragAndDrop((TransferMode.ANY));
         ClipboardContent cb = new ClipboardContent();
         FileInputStream inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\plant_gifs\\peashooter.gif");
         Image peashooter_img = new Image(inputstream);
         cb.putImage(peashooter_img);
+        cb.putString("pea");
         db.setContent(cb);
         event.consume();
     }
@@ -67,6 +71,7 @@ public class Level2 extends Level implements Initializable {
         FileInputStream inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\plant_gifs\\sunflower.gif");
         Image peashooter_img = new Image(inputstream);
         cb.putImage(peashooter_img);
+        cb.putString("sun");
         db.setContent(cb);
         event.consume();
     }
@@ -81,58 +86,88 @@ public class Level2 extends Level implements Initializable {
     @FXML
     public void handleDragDrop10(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
+        String type = event.getDragboard().getString();
+//        System.out.println(s);
         onexzero.setImage(peashooter_img);
-        plantAttack(onexzero);
+
+        if (type.equalsIgnoreCase("pea")){
+            plantAttack(onexzero);
+        }
     }
     @FXML
     public void handleDragDrop20(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         twoxzero.setImage(peashooter_img);
-        plantAttack(twoxzero);
+        String type = event.getDragboard().getString();
+        if (type.equalsIgnoreCase("pea")){
+            plantAttack(twoxzero);
+        }
     }
     @FXML
     public void handleDragDrop30(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         threexzero.setImage(peashooter_img);
-        plantAttack(threexzero);
+        String type = event.getDragboard().getString();
+        if (type.equalsIgnoreCase("pea")){
+            plantAttack(threexzero);
+        }
     }
 
     @FXML
     public void handleDragDrop11(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         onexone.setImage(peashooter_img);
-        plantAttack(onexone);
+        String type = event.getDragboard().getString();
+        if (type.equalsIgnoreCase("pea")){
+            plantAttack(onexone);
+        }
     }
     @FXML
     public void handleDragDrop21(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         twoxone.setImage(peashooter_img);
-        plantAttack(twoxone);
+        String type = event.getDragboard().getString();
+        if (type.equalsIgnoreCase("pea")){
+            plantAttack(twoxone);
+        }
     }
     @FXML
     public void handleDragDrop31(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         threexone.setImage(peashooter_img);
-        plantAttack(threexone);
+        String type = event.getDragboard().getString();
+        if (type.equalsIgnoreCase("pea")){
+            plantAttack(threexone);
+        }
     }
 
     @FXML
     public void handleDragDrop12(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         onextwo.setImage(peashooter_img);
-        plantAttack(onextwo);
+        String type = event.getDragboard().getString();
+        if (type.equalsIgnoreCase("pea")){
+            plantAttack(onextwo);
+        }
     }
     @FXML
     public void handleDragDrop22(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         twoxtwo.setImage(peashooter_img);
-        plantAttack(twoxtwo);
+        String type = event.getDragboard().getString();
+        if (type.equalsIgnoreCase("pea")){
+            plantAttack(twoxtwo);
+        }
     }
     @FXML
     public void handleDragDrop32(DragEvent event) throws FileNotFoundException{
         Image peashooter_img = event.getDragboard().getImage();
         threextwo.setImage(peashooter_img);
-        plantAttack(threextwo);
+        String type = event.getDragboard().getString();
+        if (type.equalsIgnoreCase("pea")){
+            plantAttack(threextwo);
+        }
+
     }
 
 
@@ -164,13 +199,17 @@ public class Level2 extends Level implements Initializable {
 
     }
     public void plantAttack(ImageView placeHolderPlant) throws FileNotFoundException{
-//        double posX= placeHolderPlant.getLayoutX()+placeHolderPlant.getFitWidth();
-//        double posY = placeHolderPlant.getLayoutY();
-//        System.out.println(posX);
-//        System.out.println(posY);
+        double posX= placeHolderPlant.getLayoutX()+placeHolderPlant.getFitWidth();
+        double posY = placeHolderPlant.getLayoutY();
+        System.out.println(posX);
+        System.out.println(posY);
 //        String number = placeHolderPlant.getId();
 //        double amount = 0;
-//        ImageView peaOfPlacedPlant = null;
+        FileInputStream inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\pea\\Pea.png");
+        Image peaimg = new Image(inputstream);
+        ImageView peaOfPlacedPlant = new ImageView(peaimg);
+        anchor.getChildren().add(peaOfPlacedPlant);
+//        System.out.println(placeHolderPlant.getImage());
 //        if(number.substring(0,2).equals("on")){
 //            peaOfPlacedPlant = peaOfPlacedPlant1;
 //
@@ -209,18 +248,20 @@ public class Level2 extends Level implements Initializable {
 //
 //
 //
-//        peaOfPlacedPlant.setLayoutX(posX);
-//        peaOfPlacedPlant.setLayoutY(posY);
+        peaOfPlacedPlant.setLayoutX(posX);
+        peaOfPlacedPlant.setLayoutY(posY);
+        System.out.println(peaOfPlacedPlant.getLayoutX());
+        peaOfPlacedPlant.setPreserveRatio(true);
 //
-//        peaOfPlacedPlant.setVisible(true);
+        peaOfPlacedPlant.setVisible(true);
 //        System.out.println("pea");
-//        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(10-(amount/100)*2), peaOfPlacedPlant);
-//        translationElement.setFromX(peaOfPlacedPlant.getX() );
-//        translationElement.setCycleCount(TranslateTransition.INDEFINITE);
-//        translationElement.setAutoReverse(false);
-//        translationElement.setToX( peaOfPlacedPlant.getX()+400- amount );
-//
-//        translationElement.play();
+        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(10), peaOfPlacedPlant);
+        translationElement.setFromX(peaOfPlacedPlant.getX() );
+        translationElement.setCycleCount(TranslateTransition.INDEFINITE);
+        translationElement.setAutoReverse(false);
+        translationElement.setToX( peaOfPlacedPlant.getX()+400 );
+
+        translationElement.play();
 //
 //
     }
