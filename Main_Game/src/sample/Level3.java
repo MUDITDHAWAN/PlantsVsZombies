@@ -23,11 +23,18 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class Level3 extends Level implements Initializable {
-
+    ArrayList<ImageView> zombies1 ;
+    ArrayList<ImageView> zombies2;
+    ArrayList<ImageView> zombies3 ;
+    ArrayList<ImageView> zombies4 ;
+    ArrayList<ImageView> zombies5 ;
+    ArrayList<Timeline> timelines = new ArrayList<>();
     public Level3 (){
         int number_of_Zombies= 5;
 
@@ -47,6 +54,46 @@ public class Level3 extends Level implements Initializable {
         plants_Available.add( new BarrierPlant("trying"));
         plants_Available.add( new BombPlant("trying"));
 
+    }
+
+    public ArrayList<ImageView> makeZombie(int row) throws FileNotFoundException {
+        Random rand = new Random();
+        int x = 600;
+        int y = 10;
+        int num = rand.nextInt(5)+1;
+        ArrayList<ImageView> zombies = new ArrayList<>();
+        for (int i = 0;i<num;i++){
+            FileInputStream inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\zombie_gifs\\zombie_normal.gif");
+            Image zombieimg = new Image(inputstream);
+            ImageView zombie = new ImageView(zombieimg);
+            inputstream = new FileInputStream("C:\\PlantsVsZombies\\Main_Game\\src\\sample\\pvz_images\\zombie_gifs\\Conehead_zombie.png");
+            Image zombieconeimg = new Image(inputstream);
+            ImageView zombiecone = new ImageView(zombieconeimg);
+            int whichzombie = rand.nextInt(2);
+            if(whichzombie==1){
+                zombie.setId("zombie"+String.valueOf(i) + String.valueOf(row));
+                zombies.add(zombie);
+                anchor.getChildren().add(zombie);
+                zombie.setLayoutX(x);
+                zombie.setLayoutY(y*row*7);
+                zombie.setFitWidth(50);
+                zombie.setFitHeight(80);
+                arrayList_Zombie.add(new Zombie("zombie"+String.valueOf(i)+String.valueOf(row)));
+            }
+            else{
+                zombiecone.setId("zombiecone"+String.valueOf(i) + String.valueOf(row));
+                zombies.add(zombiecone);
+                anchor.getChildren().add(zombiecone);
+                zombiecone.setLayoutX(x);
+                zombiecone.setLayoutY(y*row*7);
+                zombiecone.setFitWidth(50);
+                zombiecone.setFitHeight(80);
+                arrayList_Zombie.add(new Zombie("zombiecone"+String.valueOf(i)+String.valueOf(row)));
+            }
+
+            x += 100*(rand.nextInt(level_Number*2)+1)/2;
+        }
+        return zombies;
     }
 
     @FXML
@@ -354,7 +401,11 @@ public class Level3 extends Level implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        zombiemove();
+        zombiemove1();
+        zombiemove2();
+        zombiemove3();
+        zombiemove4();
+        zombiemove5();
         suntoken_move(suntoken);
     }
 
@@ -390,6 +441,106 @@ public class Level3 extends Level implements Initializable {
         KeyFrame keyframe = new KeyFrame(Duration.seconds(5),keyvalue);
         timeline.getKeyFrames().add(keyframe);
         timeline.play();
+
+    }
+    public void zombiemove1() {
+//
+        zombies1 = null;
+        try {
+            zombies1 = makeZombie(1);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        int t = -500;
+        for(int i = 0;i<zombies1.size();i++){
+            Timeline timeline = new Timeline();
+            timelines.add(timeline);
+            KeyValue keyvalue = new KeyValue(zombies1.get(i).translateXProperty(),t);
+            KeyFrame keyframe = new KeyFrame(Duration.seconds(100),keyvalue);
+            timeline.getKeyFrames().add(keyframe);
+            timeline.play();
+            t -= 100;
+        }
+
+    }
+    public void zombiemove2() {
+//
+        zombies2 = null;
+        try {
+            zombies2 = makeZombie(2);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        int t = -500;
+        for(int i = 0;i<zombies2.size();i++){
+            Timeline timeline = new Timeline();
+            timelines.add(timeline);
+            KeyValue keyvalue = new KeyValue(zombies2.get(i).translateXProperty(),t);
+            KeyFrame keyframe = new KeyFrame(Duration.seconds(100),keyvalue);
+            timeline.getKeyFrames().add(keyframe);
+            timeline.play();
+            t -= 100;
+        }
+
+    }
+    public void zombiemove3() {
+//
+        zombies3 = null;
+        try {
+            zombies3 = makeZombie(3);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        int t = -500;
+        for(int i = 0;i<zombies3.size();i++){
+            Timeline timeline = new Timeline();
+            timelines.add(timeline);
+            KeyValue keyvalue = new KeyValue(zombies3.get(i).translateXProperty(),t);
+            KeyFrame keyframe = new KeyFrame(Duration.seconds(100),keyvalue);
+            timeline.getKeyFrames().add(keyframe);
+            timeline.play();
+            t -= 100;
+        }
+
+    }
+    public void zombiemove4() {
+//
+        zombies4 = null;
+        try {
+            zombies4 = makeZombie(4);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        int t = -500;
+        for(int i = 0;i<zombies4.size();i++){
+            Timeline timeline = new Timeline();
+            timelines.add(timeline);
+            KeyValue keyvalue = new KeyValue(zombies4.get(i).translateXProperty(),t);
+            KeyFrame keyframe = new KeyFrame(Duration.seconds(100),keyvalue);
+            timeline.getKeyFrames().add(keyframe);
+            timeline.play();
+            t -= 100;
+        }
+
+    }
+    public void zombiemove5() {
+//
+        zombies5 = null;
+        try {
+            zombies5 = makeZombie(5);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        int t = -500;
+        for(int i = 0;i<zombies5.size();i++){
+            Timeline timeline = new Timeline();
+            timelines.add(timeline);
+            KeyValue keyvalue = new KeyValue(zombies5.get(i).translateXProperty(),t);
+            KeyFrame keyframe = new KeyFrame(Duration.seconds(100),keyvalue);
+            timeline.getKeyFrames().add(keyframe);
+            timeline.play();
+            t -= 100;
+        }
 
     }
 
@@ -449,27 +600,7 @@ public class Level3 extends Level implements Initializable {
 
     }
 
-    public void zombiemove() {
-//         TranslateTransition translationElement = new TranslateTransition(Duration.seconds(30), zombie1);
-//         translationElement.setFromX(zombie1.getX() );
-//         translationElement.setToX( zombie1.getX()-400 );
-//         translationElement.setCycleCount(1);
-//         translationElement.play();
-//         // to make the the image invisible
-//         translationElement.setOnFinished(new EventHandler<ActionEvent>() {
-//             @Override
-//             public void handle(ActionEvent event) {
-//                 zombie1.setVisible(false);
-//             }
-//         });
 
-//        Timeline timeline = new Timeline();
-//        KeyValue keyvalue = new KeyValue(zombie1.translateXProperty(),-400);
-//        KeyFrame keyframe = new KeyFrame(Duration.seconds(30),keyvalue);
-//        timeline.getKeyFrames().add(keyframe);
-//        timeline.play();
-
-    }
 
     public void plantAttack(ImageView placeHolderPlant) throws FileNotFoundException{
         double posX= placeHolderPlant.getLayoutX()+placeHolderPlant.getFitWidth();
@@ -482,42 +613,7 @@ public class Level3 extends Level implements Initializable {
         Image peaimg = new Image(inputstream);
         ImageView peaOfPlacedPlant = new ImageView(peaimg);
         anchor.getChildren().add(peaOfPlacedPlant);
-//        System.out.println(placeHolderPlant.getImage());
-//        if(number.substring(0,2).equals("on")){
-//            peaOfPlacedPlant = peaOfPlacedPlant1;
 //
-//        }
-//        else if(number.substring(0,2).equals("tw")){
-//            peaOfPlacedPlant = peaOfPlacedPlant2;
-//            amount =45;
-//        }
-//        else if(number.substring(0,2).equals("th")) {
-//            peaOfPlacedPlant = peaOfPlacedPlant3;
-//            amount = 90;
-//        }
-//        else if(number.substring(0,2).equals("fo")){
-//            peaOfPlacedPlant = peaOfPlacedPlant4;
-//            amount = 180;
-//        }
-//        else if(number.substring(0,2).equals("fi")){
-//            peaOfPlacedPlant = peaOfPlacedPlant5;
-//            amount = 225;
-//        }
-//        else if(number.substring(0,2).equals("si")){
-//            peaOfPlacedPlant = peaOfPlacedPlant6;
-//            amount = 270;
-//        }
-//        else if(number.substring(0,2).equals("se")){
-//            peaOfPlacedPlant = peaOfPlacedPlant7;
-//            amount = 315;
-//        }else if(number.substring(0,2).equals("ei")){
-//            peaOfPlacedPlant = peaOfPlacedPlant8;
-//            amount = 360;
-//        }
-//        else if(number.substring(0,2).equals("ni")){
-//            peaOfPlacedPlant = peaOfPlacedPlant9;
-//            amount = 380;
-//        }
 //
 //
 //
@@ -528,21 +624,154 @@ public class Level3 extends Level implements Initializable {
 //
         peaOfPlacedPlant.setVisible(true);
 //        System.out.println("pea");
-        TranslateTransition translationElement = new TranslateTransition(Duration.seconds(10), peaOfPlacedPlant);
-        translationElement.setFromX(peaOfPlacedPlant.getX() );
-        translationElement.setCycleCount(TranslateTransition.INDEFINITE);
-        translationElement.setAutoReverse(false);
-        translationElement.setToX( peaOfPlacedPlant.getX()+400 );
+        Timeline timeline = new Timeline();
+        timelines.add(timeline);
+        timeline.setCycleCount(timeline.INDEFINITE);
+        ImageView finalPeaOfPlacedPlant = peaOfPlacedPlant;
+        KeyValue keyvalue = new KeyValue(peaOfPlacedPlant.translateXProperty(), 400, new Interpolator() {
 
-        translationElement.play();
+            double posx = finalPeaOfPlacedPlant.getLayoutX();
+            double posy = finalPeaOfPlacedPlant.getLayoutY();
+            @Override
+            protected double curve(double v) {
+//                for(int i=0; i<plants_Used.size(); i++){
+//                    System.out.println(plants_Used.get(i));
+//                }
+                for(int i = 0;i<zombies1.size();i++){
+                    if(placeHolderPlant.getBoundsInParent().intersects(zombies1.get(i).getBoundsInParent())){
+
+//                    System.out.println("collision between "+placeHolderPlant.getId()+" "+zombie1.getId());
+
+                        placeHolderPlant.setVisible(false);
+                        finalPeaOfPlacedPlant.setVisible(false);
+
+                        finalPeaOfPlacedPlant.setLayoutX(-200000);
+                    }
+                    if (finalPeaOfPlacedPlant.getLayoutX()<600){
+                        finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+0.5);
+                    }
+                    else{
+                        finalPeaOfPlacedPlant.setLayoutX(posx);
+                        finalPeaOfPlacedPlant.setLayoutY(posy);
+                        finalPeaOfPlacedPlant.setVisible(true);
+                    }
+                    if(zombies1.get(i)!=null)
+                        checkCollision(finalPeaOfPlacedPlant,zombies1.get(i));
+                }
+
+                for(int i = 0;i<zombies2.size();i++){
+                    if(placeHolderPlant.getBoundsInParent().intersects(zombies2.get(i).getBoundsInParent())){
+
+//                    System.out.println("collision between "+placeHolderPlant.getId()+" "+zombie1.getId());
+
+                        placeHolderPlant.setVisible(false);
+                        finalPeaOfPlacedPlant.setVisible(false);
+
+                        finalPeaOfPlacedPlant.setLayoutX(-200000);
+                    }
+                    if (finalPeaOfPlacedPlant.getLayoutX()<600){
+                        finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+0.5);
+                    }
+                    else{
+                        finalPeaOfPlacedPlant.setLayoutX(posx);
+                        finalPeaOfPlacedPlant.setLayoutY(posy);
+                        finalPeaOfPlacedPlant.setVisible(true);
+                    }
+                    if(zombies2.get(i)!=null)
+                        checkCollision(finalPeaOfPlacedPlant,zombies2.get(i));
+                }
+
+                for(int i = 0;i<zombies3.size();i++){
+                    if(placeHolderPlant.getBoundsInParent().intersects(zombies3.get(i).getBoundsInParent())){
+
+//                    System.out.println("collision between "+placeHolderPlant.getId()+" "+zombie1.getId());
+
+                        placeHolderPlant.setVisible(false);
+                        finalPeaOfPlacedPlant.setVisible(false);
+
+                        finalPeaOfPlacedPlant.setLayoutX(-200000);
+                    }
+                    if (finalPeaOfPlacedPlant.getLayoutX()<600){
+                        finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+0.5);
+                    }
+                    else{
+                        finalPeaOfPlacedPlant.setLayoutX(posx);
+                        finalPeaOfPlacedPlant.setLayoutY(posy);
+                        finalPeaOfPlacedPlant.setVisible(true);
+                    }
+                    if(zombies3.get(i)!=null)
+                        checkCollision(finalPeaOfPlacedPlant,zombies3.get(i));
+                }
+                for(int i = 0;i<zombies4.size();i++){
+                    if(placeHolderPlant.getBoundsInParent().intersects(zombies4.get(i).getBoundsInParent())){
+
+//                    System.out.println("collision between "+placeHolderPlant.getId()+" "+zombie1.getId());
+
+                        placeHolderPlant.setVisible(false);
+                        finalPeaOfPlacedPlant.setVisible(false);
+
+                        finalPeaOfPlacedPlant.setLayoutX(-200000);
+                    }
+                    if (finalPeaOfPlacedPlant.getLayoutX()<600){
+                        finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+0.5);
+                    }
+                    else{
+                        finalPeaOfPlacedPlant.setLayoutX(posx);
+                        finalPeaOfPlacedPlant.setLayoutY(posy);
+                        finalPeaOfPlacedPlant.setVisible(true);
+                    }
+                    if(zombies4.get(i)!=null)
+                        checkCollision(finalPeaOfPlacedPlant,zombies4.get(i));
+                }
+                for(int i = 0;i<zombies5.size();i++){
+                    if(placeHolderPlant.getBoundsInParent().intersects(zombies5.get(i).getBoundsInParent())){
+
+//                    System.out.println("collision between "+placeHolderPlant.getId()+" "+zombie1.getId());
+
+                        placeHolderPlant.setVisible(false);
+                        finalPeaOfPlacedPlant.setVisible(false);
+
+                        finalPeaOfPlacedPlant.setLayoutX(-200000);
+                    }
+                    if (finalPeaOfPlacedPlant.getLayoutX()<600){
+                        finalPeaOfPlacedPlant.setLayoutX(finalPeaOfPlacedPlant.getLayoutX()+0.5);
+                    }
+                    else{
+                        finalPeaOfPlacedPlant.setLayoutX(posx);
+                        finalPeaOfPlacedPlant.setLayoutY(posy);
+                        finalPeaOfPlacedPlant.setVisible(true);
+                    }
+                    if(zombies5.get(i)!=null)
+                        checkCollision(finalPeaOfPlacedPlant,zombies5.get(i));
+                }
+                return 0;
+            }
+        });
+        KeyFrame keyframe = new KeyFrame(Duration.seconds(10),keyvalue);
+        timeline.getKeyFrames().add(keyframe);
+        timeline.play();
+
+
     }
 
 
     public void checkCollision(ImageView a,ImageView b){
-        System.out.println(a.getLayoutBounds().intersects(b.getLayoutBounds()));
-        System.out.println(a.getLayoutBounds()+" layoutBound a x");
-        System.out.println(b.getLayoutBounds());
+        if (a.getBoundsInParent().intersects(b.getBoundsInParent())){
+            a.setVisible(false);
 
+            a.setLayoutY(a.getLayoutY()+3000);
+            for(int i =0; i<arrayList_Zombie.size(); i++){
+                if((b.getId()).equals(arrayList_Zombie.get(i).getFx_id())){
+                    arrayList_Zombie.get(i).decrementHealth(20);
+                    System.out.println(arrayList_Zombie.get(i).getHealth());
+                    if(arrayList_Zombie.get(i).getHealth()==0){
+                        b.setVisible(false);
+                        b.setLayoutX(b.getLayoutX()-1000);
+//                        pane.getChildren().remove(b);
+                    }
+                }
+            }
+        }
     }
 }
 
